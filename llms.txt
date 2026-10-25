@@ -1,0 +1,37 @@
+# Quantum Classification Rank Limits
+
+> Exact quantum classification from examples of a flat unknown subspace, with a rank-squared quantum precision law and a general-rank comparison with classical compilation.
+
+## Scientific story
+
+The source state is P/r for an unknown rank-r projector on C^d. All N independent training copies arrive before one equal-prior test, drawn from P/r or I/d. The learner returns one classical label. The question is how much training is required when the learner can retain quantum information until prediction, compared with compiling the training to an unrestricted classical record first.
+
+## Questions and authoritative files
+
+- [README](README.md): principal results, reading route and reproduction command.
+- [Model](science/model.md): chronology, information access, learner classes, minimax quantities and oracle benchmark.
+- [Exact classifier](science/exact_classifier.md): Theorem Q1; Haar reduction, Schur blocks, add-box likelihood, rank-independent sign-of-swap decision and the dimension-independent normalized learning curve.
+- [Quantum precision](science/quantum_precision.md): Theorem Q2; self-contained growth-content moment proof, quadratic majorant and uniform copy lower bound.
+- [Construction](science/constructions.md): controlled support reflection from copies; explicit simulation error; sample, storage, active-width, gate-synthesis and preparation costs.
+- [Classical compilation](science/classical_compilation.md): Theorems C1 and C2 and Corollary C3; arbitrary collective training POVMs, the symmetrization/positivity argument, the operator converse, tomography upper and proportional-rank precision comparison.
+- [Interpretation](science/interpretation.md): rank regimes, high-rank observable contrast and limits of dimension-independent learning claims.
+- [Related work](references/RELATED_WORK.md): primary-source comparisons, exact versions and attribution of inherited ingredients.
+- [Bibliography](references/references.bib): structured source metadata.
+- [Verification](verification/README.md): reproducible finite checks, independent constructions, expected outputs and limits.
+
+## Reading routes
+
+For the physical story, read the model and interpretation, then the exact decision and constructions. For theorem verification, read the exact classifier, quantum precision and classical compilation in that order, using the model for definitions. For reproduction, follow verification/README.md and run python verification/run_all.py from the root.
+
+## Distinctions to preserve
+
+- Excess error is measured above the known-P optimum r/(2d), not above zero classification error.
+- Haar averaging is an analytical device. The source fixes one unknown P, and the theorem is minimax over P.
+- The classical comparator permits collective training measurements, unlimited classical storage and arbitrary record-dependent prediction. It is not restricted to separate measurements or a chosen tomography algorithm.
+- N_Q = Theta(r^2/epsilon) is uniform for 1 <= r <= d/2 and 0 < epsilon <= 1/8. The exact decision formula holds for every r < d.
+- N_C = Theta(rd) is established at fixed excess error 1/16 for 1 <= r <= d/2. Its general upper is O(rd/epsilon). A matching all-rank classical precision law is not established.
+- For fixed 0 < c <= 1/2, cd <= r <= d/2 and 0 < epsilon <= 1/8, the quantum lower and classical upper do match: both costs are Theta_c(d^2/epsilon).
+- Rank-independent optimal measurement does not imply rank-independent sample allocation, adaptive stopping or memory compression.
+- The direct coherent construction stores N ceil(log2 d) training qubits before prediction. Small active width excludes the idle stored examples.
+- Fixed-rank quantum-reference advantages, the compilation comparator, Schur methods, sample-based simulation and collective tomography have prior sources.
+- The finite checks support the proof algebra. They do not substitute for the analytical proofs or certify scientific priority.
