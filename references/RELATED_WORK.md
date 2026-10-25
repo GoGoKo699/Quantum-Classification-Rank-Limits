@@ -4,6 +4,8 @@ The contribution is an exact minimum-error classifier for a flat unknown subspac
 
 The comparisons below specify the source versions and the operational distinction. They are a bounded primary-source comparison, not an exhaustive priority certificate. Bibliographic records are in [references.bib](references.bib).
 
+The single educational anchor is John Watrous, *The Theory of Quantum Information* (Cambridge University Press, 2018), using the [author's standard-layout manuscript](https://jhwatrous.github.io/books-and-courses.html). The [educational bridge](../learning/watrous_bridge.md) gives the relevant sections and distinguishes their foundations from the project's additional representation calculations and research-level ingredients.
+
 | Ingredient or result | Attribution and role |
 |---|---|
 | Coherent-versus-classical reference advantage at fixed rank | Already established in [An2026](#an2026); not a new claim here |

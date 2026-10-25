@@ -37,8 +37,8 @@ A coherent learner may retain the training systems and perform any joint measure
 Its success at a fixed source is
 
 ```math
-p(T,P)=\frac12\operatorname{tr}\!\left(T\rho_P^{\otimes(N+1)}\right)
-+\frac12\operatorname{tr}\!\left[(I-T)
+p(T,P)=\frac12\mathrm{tr}\!\left(T\rho_P^{\otimes(N+1)}\right)
++\frac12\mathrm{tr}\!\left[(I-T)
   \left(\rho_P^{\otimes N}\otimes\tau_d\right)\right].
 ```
 
@@ -72,7 +72,7 @@ For $`\mathcal L\in\{\mathrm Q,\mathrm C\}`$, define
 
 ```math
 p_{\mathcal L}(N;d,r)
-=\sup_{T\in\mathcal L}\inf_{\operatorname{rank}P=r}p(T,P),
+=\sup_{T\in\mathcal L}\inf_{\mathrm{rank}\,P=r}p(T,P),
 \qquad
 E_{\mathcal L}(N;d,r)
 =p_*(d,r)-p_{\mathcal L}(N;d,r).
@@ -99,7 +99,7 @@ The statements below use $`1\le r\le d/2`$, so the oracle advantage is at least 
 
 | Result | Precise content | Authoritative proof |
 |---|---|---|
-| Q1: exact optimum | The positive spectral projector of $`J=\sum_{i=1}^{N}\operatorname{SWAP}(i,S)`$ is minimax optimal for every flat rank $`r<d`$. | [Exact classifier](exact_classifier.md) |
+| Q1: exact optimum | The positive spectral projector of $`J=\sum_{i=1}^{N}\mathrm{SWAP}(i,S)`$ is minimax optimal for every flat rank $`r<d`$. | [Exact classifier](exact_classifier.md) |
 | Learning-curve factorization | $`p_{\mathrm Q}=1/2+A_{d,r}F_{N,r}`$, with $`F_{N,r}`$ independent of $`d`$. | [Exact classifier](exact_classifier.md) |
 | Q2: quantum precision | For $`1\le r\le d/2`$ and $`0<\varepsilon\le1/8`$, $`r^2/(8\varepsilon)\le N_{\mathrm Q}(d,r,\varepsilon)\le\lceil2\pi^2r^2/\varepsilon\rceil`$. | [Quantum precision](quantum_precision.md) and [construction](constructions.md) |
 | C1: all classical compilers | $`p_{\mathrm C}-1/2\le A_{d,r}N/(rd)`$. | [Classical compilation](classical_compilation.md) |

@@ -12,7 +12,7 @@ Let $`N_{\mathrm Q}(d,r,\varepsilon)`$ and $`N_{\mathrm C}(d,r,\varepsilon)`$ be
 
 | Result | Statement | Proof |
 |---|---|---|
-| Exact coherent decision | Predict the class state on the positive eigenspace of $`J=\sum_{i=1}^N\operatorname{SWAP}(i,S)`$. The same rule is optimal for every $`1\le r<d`$. | [Q1](science/exact_classifier.md) |
+| Exact coherent decision | Predict the class state on the positive eigenspace of $`J=\sum_{i=1}^N\mathrm{SWAP}(i,S)`$. The same rule is optimal for every $`1\le r<d`$. | [Q1](science/exact_classifier.md) |
 | Exact learning curve | $`p_{\mathrm Q}=1/2+A_{d,r}F_{N,r}`$, where $`A_{d,r}=(1-r/d)/2`$ and $`F_{N,r}`$ is independent of $`d`$. | [Q1](science/exact_classifier.md) |
 | Quantum rank and precision | $`N_{\mathrm Q}=\Theta(r^2/\varepsilon)`$ uniformly for $`1\le r\le d/2`$ and $`0<\varepsilon\le1/8`$. | [Q2](science/quantum_precision.md) and [construction](science/constructions.md) |
 | Classical compilation | $`N_{\mathrm C}(d,r,1/16)=\Theta(rd)`$ for $`1\le r\le d/2`$, even with arbitrary collective training measurements and unlimited classical storage. | [C1–C2](science/classical_compilation.md) |
@@ -62,6 +62,16 @@ The exact optimal decision does not need the rank. The promised rank can still d
 For a continuous first reading, follow the table from the model through the interpretation. The exact-classifier page derives the averaged hypotheses and branch likelihood. The precision page proves the content moments and quadratic majorant. The classical page uses the same likelihood in an operator inequality that applies to all permitted compilers.
 
 [llms.txt](llms.txt) provides a compact map from questions to authoritative files.
+
+## Learn the project
+
+The educational anchor is **John Watrous, [The Theory of Quantum Information](https://jhwatrous.github.io/books-and-courses.html) (Cambridge University Press, 2018)**, using the author's standard-layout manuscript and its printed section and page numbers.
+
+Start with the [30-milestone map](learning/milestones.md). Its 12 background milestones connect states, measurements, risk, channels and symmetry into the prediction experiment. Its 18 research milestones build the exact likelihood and decision, both learning-cost converses, the attaining constructions, and the rank-dependent physical interpretation.
+
+The [Watrous-to-project bridge](learning/watrous_bridge.md) identifies the relevant sections, translates notation and supplies the additional steps needed for this problem. Watrous provides the foundations of discrimination, channel norms and invariant operators. The bridge explains how those foundations lead into the partition, branching and content calculations developed in the scientific pages.
+
+The map follows this project's logical dependencies. Use its understanding targets and proof links to choose a starting point; reading the entire textbook is unnecessary.
 
 ## Reproduce the finite checks
 

@@ -38,7 +38,7 @@ For a fixed accuracy target bounded away from random guessing and the oracle ris
 | Rank regime, with $`d=2^n`$ | Coherent training | Classical compilation | Copy ratio |
 |---|---:|---:|---:|
 | Fixed $`r`$ | $`\Theta(1)`$ | $`\Theta(d)`$ | $`\Theta(d)`$ |
-| $`r=\operatorname{poly}(n)`$ | $`\Theta(r^2)`$ | $`\Theta(rd)`$ | $`\Theta(d/r)`$ |
+| $`r=\mathrm{poly}(n)`$ | $`\Theta(r^2)`$ | $`\Theta(rd)`$ | $`\Theta(d/r)`$ |
 | $`r=d^\alpha`$, fixed $`0<\alpha<1`$ | $`\Theta(d^{2\alpha})`$ | $`\Theta(d^{1+\alpha})`$ | $`\Theta(d^{1-\alpha})`$ |
 | $`r`$ proportional to $`d`$, with $`r\le d/2`$ | $`\Theta(d^2)`$ | $`\Theta(d^2)`$ | $`\Theta(1)`$ |
 
@@ -87,7 +87,7 @@ throughout $`1\le r\le d/2`$, $`0<\varepsilon\le1/8`$, with integer ceilings und
 The optimal effect is the positive spectral projector of
 
 ```math
-J_N=\sum_{i=1}^{N}\operatorname{SWAP}(i,S).
+J_N=\sum_{i=1}^{N}\mathrm{SWAP}(i,S).
 ```
 
 Its definition contains no rank. Rank affects the amount of information available in the examples, rather than the form of the optimal fixed-budget decision. This separates the learning obstruction from a need to estimate rank before classifying.

@@ -67,8 +67,8 @@ For the precision polynomial, the checks verify its factored slack on the negati
 For `k` registers, let `U_pi` be their permutation matrices. The Haar twirl of the flat state belongs to their linear span. Its coefficients are found from
 
 ```math
-G_{\pi\sigma}=\operatorname{Tr}(U_\pi^\dagger U_\sigma),\qquad
-b_\pi=\operatorname{Tr}(\rho^{\otimes k}U_\pi)
+G_{\pi\sigma}=\mathrm{Tr}(U_\pi^\dagger U_\sigma),\qquad
+b_\pi=\mathrm{Tr}(\rho^{\otimes k}U_\pi)
 =r^{\#\mathrm{cycles}(\pi)-k},\qquad G\alpha=b.
 ```
 

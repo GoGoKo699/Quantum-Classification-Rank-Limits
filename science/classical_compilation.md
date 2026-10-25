@@ -32,7 +32,7 @@ Thus $`A_{d,r}`$ is the oracle's advantage over random guessing. Define the opti
 E_{\mathrm C}(N;d,r)
 :=
 \inf_{\mathcal C}
-\sup_{\operatorname{rank}P=r}
+\sup_{\mathrm{rank}\,P=r}
 \bigl(R_P(\mathcal C)-R_\star\bigr).
 ```
 
@@ -122,7 +122,7 @@ The right-hand side need not be positive. Only its difference from $`\Delta`$ is
 For a finite outcome space, the compiler's joint positive-decision effect is $`T=\sum_y E_y\otimes M_y`$. The same argument applies to arbitrary measurable outcome spaces. To make the integral notation precise, let $`D=d^N`$ and choose the scalar probability measure
 
 ```math
-\mu(B)=\frac{\operatorname{Tr}E(B)}{D}.
+\mu(B)=\frac{\mathrm{Tr}E(B)}{D}.
 ```
 
 Finite dimensionality gives a positive operator-valued density $`e_y`$ such that
@@ -190,7 +190,7 @@ F_y\succeq0,
 \qquad
 \int F_y\,\mu(dy)=A_N,
 \qquad
-\int\operatorname{Tr}F_y\,\mu(dy)=1.
+\int\mathrm{Tr}F_y\,\mu(dy)=1.
 \tag{C1.7}
 ```
 
@@ -201,8 +201,8 @@ These properties hold without requiring the training measurement to be a state e
 Let $`F_y^{(i)}`$ denote the reduced operator of $`F_y`$ on training register $`i`$. The swap trace identity gives
 
 ```math
-\operatorname{Tr}\bigl[(F_y\otimes M_y)S_{i,t}\bigr]
-=\operatorname{Tr}\bigl[F_y^{(i)}M_y\bigr].
+\mathrm{Tr}\bigl[(F_y\otimes M_y)S_{i,t}\bigr]
+=\mathrm{Tr}\bigl[F_y^{(i)}M_y\bigr].
 \tag{C1.8}
 ```
 
@@ -210,22 +210,22 @@ Because $`F_y^{(i)}\succeq0`$ and $`0\preceq M_y\preceq I`$,
 
 ```math
 0\le
-\operatorname{Tr}\bigl[F_y^{(i)}M_y\bigr]
-\le\operatorname{Tr}F_y.
+\mathrm{Tr}\bigl[F_y^{(i)}M_y\bigr]
+\le\mathrm{Tr}F_y.
 ```
 
 Taking the trace of (C1.4) against the positive effect (C1.5), and then using (C1.7)–(C1.8), yields
 
 ```math
 \begin{aligned}
-\operatorname{Tr}(T\Delta)
+\mathrm{Tr}(T\Delta)
 &\le
 \frac{d-r}{rd^2}
 \int\sum_{i=1}^{N}
-\operatorname{Tr}\bigl[F_y^{(i)}M_y\bigr]\,\mu(dy)\\
+\mathrm{Tr}\bigl[F_y^{(i)}M_y\bigr]\,\mu(dy)\\
 &\le
 \frac{d-r}{rd^2}
-\int N\operatorname{Tr}F_y\,\mu(dy)\\
+\int N\mathrm{Tr}F_y\,\mu(dy)\\
 &=\frac{N(d-r)}{rd^2}.
 \end{aligned}
 \tag{C1.9}
@@ -237,9 +237,9 @@ For equal priors, success is
 
 ```math
 \overline p_{\mathrm C}
-=\frac12\operatorname{Tr}(TH_1)
- +\frac12\operatorname{Tr}((I-T)H_0)
-=\frac12+\frac12\operatorname{Tr}(T\Delta).
+=\frac12\mathrm{Tr}(TH_1)
+ +\frac12\mathrm{Tr}((I-T)H_0)
+=\frac12+\frac12\mathrm{Tr}(T\Delta).
 ```
 
 Equation (C1.9) proves (C1.1). Subtracting this success bound from the known-$`P`$ optimum gives (C1.2), since worst-case risk is at least Haar-average risk and excess risk is nonnegative. The independent oracle bound also caps the success advantage at $`A_{d,r}`$. This completes the proof.
@@ -257,7 +257,7 @@ The upper bound uses the collective measurement analyzed by O'Donnell and Wright
 \tag{C2.1}
 ```
 
-Here $`\|X\|_F^2=\operatorname{Tr}(X^\dagger X)`$. The expectation is over the measurement record. The statement is uniform in the state and has no dimension logarithm. [C-OW]
+Here $`\|X\|_F^2=\mathrm{Tr}(X^\dagger X)`$. The expectation is over the measurement record. The statement is uniform in the state and has no dimension logarithm. [C-OW]
 
 **Theorem C2.** For known rank $`r`$, there is a classical compiler using $`N\ge1`$ training copies such that, for every rank-$`r`$ projector $`P`$,
 
@@ -285,7 +285,7 @@ The state $`\widehat P/r`$ is a closest normalized rank-$`r`$ projector to $`\wi
 ```math
 \left\|\widehat\rho-\frac{Q}{r}\right\|_F^2
 =\|\widehat\rho\|_F^2+\frac1r
- -\frac{2}{r}\operatorname{Tr}(\widehat\rho Q),
+ -\frac{2}{r}\mathrm{Tr}(\widehat\rho Q),
 ```
 
 and the top-$`r`$ eigenspace maximizes the last trace. Since the true $`P/r`$ belongs to this comparison class, the triangle inequality implies
@@ -304,8 +304,8 @@ For a fixed training record, the classifier's error is
 
 ```math
 R_P(\widehat P)
-=\frac12\left(1-\frac{\operatorname{Tr}(P\widehat P)}{r}\right)
- +\frac12\frac{\operatorname{Tr}\widehat P}{d}.
+=\frac12\left(1-\frac{\mathrm{Tr}(P\widehat P)}{r}\right)
+ +\frac12\frac{\mathrm{Tr}\widehat P}{d}.
 ```
 
 Both projectors have rank $`r`$. Therefore its excess risk has the exact expression
@@ -313,7 +313,7 @@ Both projectors have rank $`r`$. Therefore its excess risk has the exact express
 ```math
 \begin{aligned}
 R_P(\widehat P)-R_\star
-&=\frac{r-\operatorname{Tr}(P\widehat P)}{2r}\\
+&=\frac{r-\mathrm{Tr}(P\widehat P)}{2r}\\
 &=\frac{\|P-\widehat P\|_F^2}{4r}\\
 &\le r\left\|\widehat\rho-\frac{P}{r}\right\|_F^2.
 \end{aligned}
