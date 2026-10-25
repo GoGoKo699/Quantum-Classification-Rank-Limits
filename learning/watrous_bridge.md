@@ -189,7 +189,7 @@ This ratio is used only on the support of $`H_0`$. Every active diagram has at m
 To identify the corresponding measurement, define the central transposition sum
 
 ```math
-Z_n=\sum_{1\le i<j\le n}(ij).
+Z_n=\sum_{1\le i\lt j\le n}(ij).
 ```
 
 Its action on $`V_\lambda`$ is the scalar $`\theta_\lambda=\sum_{b\in\lambda}c(b)`$. The [canonical derivation](../science/exact_classifier.md#3-hook-content-ratio-and-the-likelihood-operator) obtains that scalar by comparing the next-to-leading coefficient of the dimension polynomial with its character expansion. The difference $`Z_{N+1}-Z_N`$ is the sum of training–test swaps,
