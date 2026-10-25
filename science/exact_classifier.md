@@ -73,8 +73,8 @@ Any binary joint procedure induces an effect $`0\le T\le I`$ on the supplied tra
 
 ```math
 p(T,P)
-=\frac12\operatorname{Tr}\!\left[T\rho_P^{\otimes(N+1)}\right]
-+\frac12\operatorname{Tr}\!\left[(I-T)
+=\frac12\mathrm{Tr}\!\left[T\rho_P^{\otimes(N+1)}\right]
++\frac12\mathrm{Tr}\!\left[(I-T)
   \left(\rho_P^{\otimes N}\otimes\frac{I_d}{d}\right)\right].
 ```
 
@@ -99,7 +99,7 @@ The average success is
 
 ```math
 \overline p(T)
-=\frac12+\frac12\operatorname{Tr}[T(H_1-H_0)].
+=\frac12+\frac12\mathrm{Tr}[T(H_1-H_0)].
 ```
 
 For a traceless Hermitian operator $`\Delta=H_1-H_0`$, maximizing over effects gives
@@ -165,10 +165,10 @@ Thus a common block is labeled by $`\lambda\nearrow\mu`$ and has dimension $`D_\
 Only $`\ell(\lambda)\le r`$ contributes to $`H_0`$. If $`\ell(\lambda)>r`$, every successor also has more than $`r`$ rows, so $`H_1`$ vanishes there too. Hence
 
 ```math
-\operatorname{supp}H_1\subseteq\operatorname{supp}H_0.
+\mathrm{supp}\,H_1\subseteq\mathrm{supp}\,H_0.
 ```
 
-All likelihood ratios below are taken on $`\operatorname{supp}H_0`$, including blocks where $`H_1`$ has eigenvalue zero. No inverse of a zero training coefficient is used.
+All likelihood ratios below are taken on $`\mathrm{supp}\,H_0`$, including blocks where $`H_1`$ has eigenvalue zero. No inverse of a zero training coefficient is used.
 
 ## 3. Hook-content ratio and the likelihood operator
 
@@ -202,7 +202,7 @@ whenever $`D_\lambda(k)>0`$. This identity also covers $`D_\mu(k)=0`$: the new b
 The induction branching rule
 
 ```math
-\operatorname{Ind}_{S_N}^{S_{N+1}}V_\lambda
+\mathrm{Ind}_{S_N}^{S_{N+1}}V_\lambda
 \cong\bigoplus_{\mu:\lambda\nearrow\mu}V_\mu
 ```
 
@@ -234,7 +234,7 @@ D_\lambda(k)=\frac1{n!}\sum_{\pi\in S_n}
 
 For $`n\ge2`$, comparing the coefficient of $`k^{n-1}`$ with the hook-content product gives $`\binom n2\chi_\lambda((12))/f_\lambda=\theta_\lambda`$. This is the scalar of the central transposition sum, since a central operator acts as a scalar and its trace is the sum of these transposition characters. For $`n=0,1`$, both sides are zero.
 
-Since $`J_N`$ is the difference between the central transposition sums for $`S_{N+1}`$ and $`S_N`$, its eigenvalue on the branch $`\lambda\nearrow\mu`$ is $`\theta_\mu-\theta_\lambda=c`$. Thus the preceding scalar formula is an operator likelihood formula on $`\operatorname{supp}H_0`$:
+Since $`J_N`$ is the difference between the central transposition sums for $`S_{N+1}`$ and $`S_N`$, its eigenvalue on the branch $`\lambda\nearrow\mu`$ is $`\theta_\mu-\theta_\lambda=c`$. Thus the preceding scalar formula is an operator likelihood formula on $`\mathrm{supp}\,H_0`$:
 
 ```math
 L=\frac dr(rI+J_N)(dI+J_N)^{-1}.

@@ -95,7 +95,7 @@ Moreover, every populated training diagram has at most $`r`$ rows, so $`C\ge-r`$
 Fix an arbitrary partition $`\lambda\vdash N`$. Let $`V_\lambda`$ be its symmetric-group representation, and let
 
 ```math
-W_\lambda=\operatorname{Ind}_{S_N}^{S_{N+1}}V_\lambda.
+W_\lambda=\mathrm{Ind}_{S_N}^{S_{N+1}}V_\lambda.
 ```
 
 The branching rule gives
@@ -106,7 +106,7 @@ W_\lambda\cong\bigoplus_{\mu:\lambda\nearrow\mu}V_\mu,
 \dim W_\lambda=(N+1)f_\lambda.
 ```
 
-For a representation space $`W`$, write $`\tau_W(X)=\operatorname{Tr}_W(X)/\dim W`$ for normalized trace. Denote by
+For a representation space $`W`$, write $`\tau_W(X)=\mathrm{Tr}_W(X)/\dim W`$ for normalized trace. Denote by
 
 ```math
 Z_n=\sum_{1\le i<j\le n}(ij)

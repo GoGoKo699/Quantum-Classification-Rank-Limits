@@ -30,7 +30,7 @@ Let $`S_{\mathrm{swap}}`$ exchange one data register with one independent progra
 
 ```math
 \Phi_\delta(X)
-=\operatorname{tr}_{\mathrm{prog}}\!
+=\mathrm{tr}_{\mathrm{prog}}\!
  \left[
  e^{-i\delta S_{\mathrm{swap}}}
  (X\otimes\sigma)
@@ -112,11 +112,11 @@ For a finite gate set, use Clifford+T, so the fixed controlled-swap gates have e
 
 ```math
 O\!\left(
-m\left[n+\operatorname{polylog}\!\left(\frac m\varepsilon\right)\right]
+m\left[n+\mathrm{polylog}\!\left(\frac m\varepsilon\right)\right]
 \right)
 ```
 
-with the polylogarithmic exponent determined by the synthesis algorithm. For a different finite universal gate set, synthesizing the fixed gates as well can instead give $`O(mn\,\operatorname{polylog}(mn/\varepsilon))`$. These are gate-count bounds; no fault-tolerant hardware threshold or polynomial-time preparation guarantee for every unknown subspace is asserted.
+with the polylogarithmic exponent determined by the synthesis algorithm. For a different finite universal gate set, synthesizing the fixed gates as well can instead give $`O(mn\,\mathrm{polylog}(mn/\varepsilon))`$. These are gate-count bounds; no fault-tolerant hardware threshold or polynomial-time preparation guarantee for every unknown subspace is asserted.
 
 For dimensions that are not powers of two, the systems can be embedded in $`\lceil\log_2d\rceil`$ qubits. The physical background remains $`I_d/d`$ on the specified $`d`$-dimensional subspace. Padding does not replace it by a maximally mixed state on the larger qubit space.
 
