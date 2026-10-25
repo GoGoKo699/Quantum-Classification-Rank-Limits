@@ -47,7 +47,7 @@ The error criterion is expected classification risk, not a high-probability guar
 \le
 \frac12+
 \frac{N(d-r)}{2rd^2}.
-\tag{C1.1}
+\qquad\text{(C1.1)}
 ```
 
 Consequently,
@@ -56,7 +56,7 @@ Consequently,
 E_{\mathrm C}(N;d,r)
 \ge
 A_{d,r}\left(1-\frac{N}{rd}\right)_+.
-\tag{C1.2}
+\qquad\text{(C1.2)}
 ```
 
 Equivalently, the compiler's average fraction of the oracle advantage is at most $`\min\{1,N/(rd)\}`$. In particular, achieving a fixed positive fraction of that advantage requires $`\Omega(rd)`$ training copies.
@@ -89,7 +89,7 @@ The exact likelihood identity, proved in [Exact classifier](exact_classifier.md)
 H_1=H_0\,L(J),
 \qquad
 L(J)=\frac{d}{r}\frac{r+J}{d+J}.
-\tag{C1.3}
+\qquad\text{(C1.3)}
 ```
 
 All fractions in (C1.3) are evaluated on the support of $`H_0`$. On that support $`J\succeq-rI`$, so $`d+J`$ is strictly positive. Also $`H_0`$ commutes with $`J`$. Both hypotheses vanish outside this support, so extending the resulting operators by zero causes no ambiguity.
@@ -112,7 +112,7 @@ Functional calculus, followed by multiplication by the commuting positive operat
 &\preceq
 \frac{d-r}{rd^2}(A_N\otimes I)J.
 \end{aligned}
-\tag{C1.4}
+\qquad\text{(C1.4)}
 ```
 
 The right-hand side need not be positive. Only its difference from $`\Delta`$ is asserted to be positive; that is sufficient for taking its trace against a decision effect.
@@ -139,7 +139,7 @@ The compiler effect is consequently
 T=\int e_y\otimes M_y\,\mu(dy),
 \qquad
 0\preceq T\preceq I.
-\tag{C1.5}
+\qquad\text{(C1.5)}
 ```
 
 Every state $`\rho_P^{\otimes N}`$ is invariant under permutations of its training registers. We may therefore replace each density $`e_y`$ by
@@ -148,7 +148,7 @@ Every state $`\rho_P^{\otimes N}`$ is invariant under permutations of its traini
 \widetilde e_y
 =\frac{1}{N!}\sum_{\pi\in S_N}
  V_\pi e_yV_\pi^\dagger.
-\tag{C1.6}
+\qquad\text{(C1.6)}
 ```
 
 This replacement preserves positivity, normalization, and the probability of every outcome for every $`P`$. It therefore leaves the compiler's risk unchanged, even before Haar averaging. For $`N=0`$ the averaging is trivial.
@@ -191,7 +191,7 @@ F_y\succeq0,
 \int F_y\,\mu(dy)=A_N,
 \qquad
 \int\mathrm{Tr}F_y\,\mu(dy)=1.
-\tag{C1.7}
+\qquad\text{(C1.7)}
 ```
 
 These properties hold without requiring the training measurement to be a state estimator, a tensor product measurement, or a finite-outcome measurement.
@@ -203,7 +203,7 @@ Let $`F_y^{(i)}`$ denote the reduced operator of $`F_y`$ on training register $`
 ```math
 \mathrm{Tr}\bigl[(F_y\otimes M_y)S_{i,t}\bigr]
 =\mathrm{Tr}\bigl[F_y^{(i)}M_y\bigr].
-\tag{C1.8}
+\qquad\text{(C1.8)}
 ```
 
 Because $`F_y^{(i)}\succeq0`$ and $`0\preceq M_y\preceq I`$,
@@ -228,7 +228,7 @@ Taking the trace of (C1.4) against the positive effect (C1.5), and then using (C
 \int N\mathrm{Tr}F_y\,\mu(dy)\\
 &=\frac{N(d-r)}{rd^2}.
 \end{aligned}
-\tag{C1.9}
+\qquad\text{(C1.9)}
 ```
 
 All integrands in the second line are nonnegative and integrable, with their total trace fixed by (C1.7). The finite sum and integral therefore introduce no convergence issue.
@@ -254,7 +254,7 @@ The upper bound uses the collective measurement analyzed by O'Donnell and Wright
 \mathbb E_\rho
 \|\widehat\rho-\rho\|_F^2
 \le\frac{4d-3}{N}.
-\tag{C2.1}
+\qquad\text{(C2.1)}
 ```
 
 Here $`\|X\|_F^2=\mathrm{Tr}(X^\dagger X)`$. The expectation is over the measurement record. The statement is uniform in the state and has no dimension logarithm. [C-OW]
@@ -264,7 +264,7 @@ Here $`\|X\|_F^2=\mathrm{Tr}(X^\dagger X)`$. The expectation is over the measure
 ```math
 R_P(\mathcal C)-R_\star
 \le\frac{(4d-3)r}{N}.
-\tag{C2.2}
+\qquad\text{(C2.2)}
 ```
 
 Consequently,
@@ -273,7 +273,7 @@ Consequently,
 E_{\mathrm C}(N;d,r)
 \le
 \min\left\{A_{d,r},\frac{(4d-3)r}{N}\right\}.
-\tag{C2.3}
+\qquad\text{(C2.3)}
 ```
 
 ### Proof
@@ -297,7 +297,7 @@ and the top-$`r`$ eigenspace maximizes the last trace. Since the true $`P/r`$ be
  +\left\|\widehat\rho-\frac{P}{r}\right\|_F
 \le
 2\left\|\widehat\rho-\frac{P}{r}\right\|_F.
-\tag{C2.4}
+\qquad\text{(C2.4)}
 ```
 
 For a fixed training record, the classifier's error is
@@ -317,7 +317,7 @@ R_P(\widehat P)-R_\star
 &=\frac{\|P-\widehat P\|_F^2}{4r}\\
 &\le r\left\|\widehat\rho-\frac{P}{r}\right\|_F^2.
 \end{aligned}
-\tag{C2.5}
+\qquad\text{(C2.5)}
 ```
 
 Taking the expectation and applying (C2.1) proves (C2.2). The additional option of guessing the label uniformly at random has excess risk $`A_{d,r}`$, which proves (C2.3).
@@ -341,7 +341,7 @@ N_{\mathrm C}(d,r,1/16)
 \left\lceil rd\left(1-\frac{1}{16A_{d,r}}\right)\right\rceil
 \ge
 \left\lceil\frac34rd\right\rceil.
-\tag{C3.1}
+\qquad\text{(C3.1)}
 ```
 
 Theorem C2 supplies the sufficient budget
@@ -350,14 +350,14 @@ Theorem C2 supplies the sufficient budget
 N_{\mathrm C}(d,r,1/16)
 \le
 \left\lceil16r(4d-3)\right\rceil.
-\tag{C3.2}
+\qquad\text{(C3.2)}
 ```
 
 Hence, with universal constants and with the same excess-risk target for every admissible rank and dimension,
 
 ```math
 \boxed{N_{\mathrm C}(d,r,1/16)=\Theta(rd).}
-\tag{C3.3}
+\qquad\text{(C3.3)}
 ```
 
 The [quantum precision theorem](quantum_precision.md) gives $`N_{\mathrm Q}(d,r,1/16)=\Theta(r^2)`$. The fixed-accuracy sample advantage from retaining the training systems is therefore of order $`d/r`$. It is large at low rank and becomes a constant factor when rank is proportional to the ambient dimension.
@@ -403,7 +403,7 @@ rd\left(1-\frac{\varepsilon}{A_{d,r}}\right)
 \le N_{\mathrm C}(d,r,\varepsilon)
 \le
 \left\lceil\frac{(4d-3)r}{\varepsilon}\right\rceil.
-\tag{C3.4}
+\qquad\text{(C3.4)}
 ```
 
 In particular, fix any constant $`c\in(0,1/2]`$ and take $`cd\le r\le d/2`$. The first lower bound in (C3.4) is at least $`c^2d^2/(8\varepsilon)`$, while its upper bound is at most $`2d^2/\varepsilon`$ before integer rounding. Therefore, uniformly over $`0<\varepsilon\le1/8`$,
@@ -413,7 +413,7 @@ N_{\mathrm C}(d,r,\varepsilon)
 =\Theta_c\!\left(\frac{d^2}{\varepsilon}\right)
 ,\qquad N_{\mathrm Q}(d,r,\varepsilon)
 =\Theta_c\!\left(\frac{d^2}{\varepsilon}\right).
-\tag{C3.5}
+\qquad\text{(C3.5)}
 ```
 
 The constants may depend on $`c`$. Both access models thus have the same sample-complexity order throughout the precision range when rank is a fixed fraction of dimension. For general rank, (C3.4) leaves a gap between the lower and upper precision bounds. The fixed-accuracy $`\Theta(rd)`$ result therefore does not assert a general $`\Theta(rd/\varepsilon)`$ law.
