@@ -109,7 +109,7 @@ W_\lambda\cong\bigoplus_{\mu:\lambda\nearrow\mu}V_\mu,
 For a representation space $`W`$, write $`\tau_W(X)=\mathrm{Tr}_W(X)/\dim W`$ for normalized trace. Denote by
 
 ```math
-Z_n=\sum_{1\le i<j\le n}(ij)
+Z_n=\sum_{1\le i\lt j\le n}(ij)
 ```
 
 the central sum of transpositions in the group algebra of $`S_n`$. As stated in the exact-classifier proof, it acts on $`V_\nu`$ as the total content $`\theta_\nu=\sum_{b\in\nu}c(b)`$.
