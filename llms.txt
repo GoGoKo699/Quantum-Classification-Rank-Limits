@@ -13,6 +13,7 @@ The source state is P/r for an unknown rank-r projector on C^d. All N independen
 - [Exact classifier](science/exact_classifier.md): Theorem Q1; Haar reduction, Schur blocks, add-box likelihood, rank-independent sign-of-swap decision and the dimension-independent normalized learning curve.
 - [Quantum precision](science/quantum_precision.md): Theorem Q2; self-contained growth-content moment proof, quadratic majorant and uniform copy lower bound.
 - [Construction](science/constructions.md): controlled support reflection from copies; explicit simulation error; sample, storage, active-width, gate-synthesis and preparation costs.
+- [Programming application](science/programming_application.md): Q2 transferred to ordinary reflection programming through exact anchored routing, contrast-normalized risk and hard-budget dimension/rank conversions; single-target optimality and the remaining intermediate-batch gap.
 - [Classical compilation](science/classical_compilation.md): Theorems C1 and C2 and Corollary C3; arbitrary collective training POVMs, the symmetrization/positivity argument, the operator converse, tomography upper and proportional-rank precision comparison.
 - [Interpretation](science/interpretation.md): rank regimes, high-rank observable contrast and limits of dimension-independent learning claims.
 - [Related work](references/RELATED_WORK.md): primary-source comparisons, exact versions and attribution of inherited ingredients.
@@ -31,14 +32,15 @@ For study, use the milestone map to locate the relevant understanding target, th
 
 ## Reading routes
 
-For the physical story, read the model and interpretation, then the exact decision and constructions. For theorem verification, read the exact classifier, quantum precision and classical compilation in that order, using the model for definitions. For reproduction, follow verification/README.md and run python verification/run_all.py from the root.
+For the physical story, read the model and interpretation, then the exact decision and constructions. For theorem verification, read the exact classifier, quantum precision and classical compilation in that order, using the model for definitions. For the programming consequence, then read science/programming_application.md and its pinned authoritative transfer proof. For reproduction, follow verification/README.md and run python verification/run_all.py from the root.
 
 ## Distinctions to preserve
 
 - Excess error is measured above the known-P optimum r/(2d), not above zero classification error.
 - Haar averaging is an analytical device. The source fixes one unknown P, and the theorem is minimax over P.
 - The classical comparator permits collective training measurements, unlimited classical storage and arbitrary record-dependent prediction. It is not restricted to separate measurements or a chosen tomography algorithm.
-- N_Q = Theta(r^2/epsilon) is uniform for 1 <= r <= d/2 and 0 < epsilon <= 1/8. The exact decision formula holds for every r < d.
+- N_Q = Theta(r^2/epsilon) is uniform for 1 <= r <= d/2 and 0 < epsilon <= 1/8. The exact decision formula and contrast-dependent finite-sample Q2 bounds hold for every r < d.
+- The programming application uses excess risk A_(d,s) epsilon, so Q2's contrast cancels. It closes the single-target ordinary-reflection order at all nontrivial programming ranks, with exact anchored dimension mappings; it does not add a factor k to the one-test converse.
 - N_C = Theta(rd) is established at fixed excess error 1/16 for 1 <= r <= d/2. Its general upper is O(rd/epsilon). A matching all-rank classical precision law is not established.
 - For fixed 0 < c <= 1/2, cd <= r <= d/2 and 0 < epsilon <= 1/8, the quantum lower and classical upper do match: both costs are Theta_c(d^2/epsilon).
 - Rank-independent optimal measurement does not imply rank-independent sample allocation, adaptive stopping or memory compression.

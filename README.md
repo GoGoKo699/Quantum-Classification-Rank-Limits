@@ -12,9 +12,9 @@ Let $`N_{\mathrm Q}(d,r,\varepsilon)`$ and $`N_{\mathrm C}(d,r,\varepsilon)`$ be
 
 | Result | Statement | Proof |
 |---|---|---|
-| Exact coherent decision | Predict the class state on the positive eigenspace of $`J=\sum_{i=1}^N\mathrm{SWAP}(i,S)`$. The same rule is optimal for every $`1\le r<d`$. | [Q1](science/exact_classifier.md) |
+| Exact coherent decision | Predict the class state on the positive eigenspace of $`J=\sum_{i=1}^N\mathrm{SWAP}(i,S)`$. The same rule is optimal for every $`1\le r\lt d`$. | [Q1](science/exact_classifier.md) |
 | Exact learning curve | $`p_{\mathrm Q}=1/2+A_{d,r}F_{N,r}`$, where $`A_{d,r}=(1-r/d)/2`$ and $`F_{N,r}`$ is independent of $`d`$. | [Q1](science/exact_classifier.md) |
-| Quantum rank and precision | $`N_{\mathrm Q}=\Theta(r^2/\varepsilon)`$ uniformly for $`1\le r\le d/2`$ and $`0<\varepsilon\le1/8`$. | [Q2](science/quantum_precision.md) and [construction](science/constructions.md) |
+| Quantum rank and precision | $`N_{\mathrm Q}=\Theta(r^2/\varepsilon)`$ uniformly for $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$. | [Q2](science/quantum_precision.md) and [construction](science/constructions.md) |
 | Classical compilation | $`N_{\mathrm C}(d,r,1/16)=\Theta(rd)`$ for $`1\le r\le d/2`$, even with arbitrary collective training measurements and unlimited classical storage. | [C1–C2](science/classical_compilation.md) |
 | Rank proportional to dimension | For fixed $`c>0`$ and $`cd\le r\le d/2`$, both learner classes require $`\Theta_c(d^2/\varepsilon)`$ copies in the stated precision range. | [C3](science/classical_compilation.md#corollary-c3-combined-lower-bound-and-proportional-rank) |
 
@@ -39,6 +39,12 @@ The matching classical converse is established at fixed accuracy and for rank pr
 
 At fixed accuracy, fixed rank and $`d=2^n`$, coherent retention saves an exponential number of training copies in the number of qubits. At $`r=d/2`$, the oracle still succeeds with probability $`3/4`$, but both learner classes need order $`d^2/\varepsilon`$ copies. The loss of the copy advantage therefore occurs while the classification task retains constant observable contrast.
 
+## Converse application: ordinary reflection programming
+
+[Collective Quantum Programming](https://github.com/GoGoKo699/Collective-Quantum-Programming) studies the same flat source as a program for an ordinary reflection channel on a batch of data registers. The all-rank finite-sample form of Q2 transfers through a known vacuum or occupied eigenstate: channel error $`\epsilon`$ gives classification excess at most the available contrast times $`\epsilon`$, so that contrast cancels in the lower bound. This establishes the single-target programming law $`N_* = \Theta(r^2/\epsilon)`$ uniformly over every nontrivial programming dimension and rank for $`0\lt\epsilon\le1/8`$.
+
+The [application and exact promise mapping](science/programming_application.md) keep the classification and programming dimensions, hard specimen budget and unhalved diamond error separate. The [authoritative transfer proof](https://github.com/GoGoKo699/Collective-Quantum-Programming/blob/c6b5150ce0e7d4f6ac81d171bb7f136ad86a1358/science/classification_transfer.md) is in the programming account. For intermediate batches it strengthens the lower bound to order $`(r^2+rk^2)/\epsilon`$; it does not establish the missing $`r^2k/\epsilon`$ term. Q2 remains the statistical theorem supplied by this repository.
+
 ## What information the learner receives
 
 All $`N`$ training copies arrive before the test. A coherent learner may retain them and perform any joint measurement at prediction. A classical compiler may perform any collective POVM during training, retain its full classical outcome, and choose any later test measurement from that record. It must discard the training quantum information before the test arrives.
@@ -55,6 +61,7 @@ The exact optimal decision does not need the rank. The promised rank can still d
 | Why is a rank-independent sign-of-swap measurement exactly optimal? | [Exact classifier and Schur likelihood](science/exact_classifier.md) |
 | Why must every coherent learner use order $`r^2/\varepsilon`$ copies? | [Growth-content moments and the precision converse](science/quantum_precision.md) |
 | How is the sample order attained, and what does it cost to implement? | [Controlled support reflection and resources](science/constructions.md) |
+| What does Q2 imply for ordinary reflection programming? | [Anchored converse application and exact promise mapping](science/programming_application.md) |
 | Why does an arbitrary classical compiler require order $`rd`$ copies at fixed accuracy? | [Compiler converse and tomography construction](science/classical_compilation.md) |
 | What changes between low and high rank? | [Physical interpretation and claim boundaries](science/interpretation.md) |
 | Which ingredients and earlier advantages are inherited? | [Related work](references/RELATED_WORK.md) and [bibliography](references/references.bib) |

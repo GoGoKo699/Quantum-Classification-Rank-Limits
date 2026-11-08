@@ -40,7 +40,7 @@ The assumptions are those of the [model](../science/model.md), consolidated in [
 - A coherent learner can retain the training systems. A classical compiler must measure them before the test arrives and retain only a classical record, with arbitrary collective training measurements and unrestricted classical computation allowed.
 - The output is one label. The test can be destroyed, both kinds of error are allowed, and the model has no reuse requirement.
 
-The exact formulas use $`1\le r<d`$. The dimension-uniform precision statements use $`1\le r\le d/2`$ and $`0<\varepsilon\le1/8`$. Risk includes averaging over the equal label prior and measurement randomness, followed by the worst case over $`P`$.
+The exact formulas use $`1\le r\lt d`$. The dimension-uniform precision statements use $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$. Risk includes averaging over the equal label prior and measurement randomness, followed by the worst case over $`P`$.
 
 ## 1. From the experiment to binary state discrimination
 
@@ -453,7 +453,45 @@ This proves the constructive side of Q2. The rank enters the chosen simulation t
 
 The resource count follows the experiment's access order. The examples arrive before the test, so all unused program copies require storage until prediction. For $`d=2^n`$, the direct construction stores $`mn`$ unknown-state qubits even though each interaction has active width $`2n+O(1)`$. Source preparation and gate synthesis have their own charged costs, specified in the [resource table](../science/constructions.md#gates-active-width-and-stored-data). Small active width does not change the initial training storage.
 
-## 7. Proof connections across the milestone map
+## 7. From classification precision to a programming converse
+
+**Milestones:** [M07](milestones.md#m07), [M19](milestones.md#m19), [M25](milestones.md#m25), [M29–M30](milestones.md#m29).  
+**Application:** [ordinary reflection programming](../science/programming_application.md). The authoritative routing proof is in [Collective Quantum Programming](https://github.com/GoGoKo699/Collective-Quantum-Programming/blob/c6b5150ce0e7d4f6ac81d171bb7f136ad86a1358/science/classification_transfer.md).
+
+The attaining construction turns channel accuracy into prediction accuracy. Q2 can also constrain any processor that promises a sufficiently accurate channel. This converse implication requires an actual circuit producing a classifier; a classification label by itself does not reconstruct a reflection channel.
+
+Let $`Q`$ have rank $`s\lt d`$ on the classification space. Consider ordinary reflection programming in dimension $`D=d+1`$ for the restricted projectors $`P=0_v\oplus Q`$, with known vacuum $`v`$. One $`Q/s`$ training copy embeds as one $`P/s`$ program. Controlled known swaps route either the later test or $`v`$ through a single ordinary-channel invocation. Because the vacuum has known eigenvalue $`+1`$, undoing the swaps yields controlled $`R_Q`$ ideally. This routing invokes the same ordinary channel on both branches. It supplies no control of an unknown oracle, and known pre- and postprocessing do not increase its unhalved diamond error $`\epsilon`$.
+
+The induced support-decision effect $`M_Q`$ obeys $`\Vert M_Q-Q\Vert_\infty\le\epsilon/2`$. Rather than bound the excess risk by an absolute probability change, keep the contrast in the exact decision identity:
+
+```math
+\begin{aligned}
+R(M_Q,Q)-R_*
+&=\frac12\mathrm{Tr}\left[(Q-M_Q)
+\left(\frac Qs-\frac{I_d}{d}\right)\right]\\
+&\le\frac\epsilon4\left\|\frac Qs-\frac{I_d}{d}\right\|_1
+=A_{d,s}\epsilon,
+\qquad A_{d,s}=\frac{1-s/d}{2}.
+\end{aligned}
+```
+
+The background stays $`I_d/d`$ on the classification space, despite the programmer's extra dimension. For $`0\lt\epsilon\le1/2`$, Q2's all-rank finite-sample bound excludes $`N\lt s^2`$ and then implies
+
+```math
+A_{d,s}\epsilon\ge A_{d,s}\frac{s^2}{N+s^2}
+\quad\Longrightarrow\quad
+N\ge\left\lceil s^2(\epsilon^{-1}-1)\right\rceil.
+```
+
+The contrast cancels because $`s\lt d`$. This uses the full theorem, not only its convenient $`s\le d/2`$ corollary. For example, $`d=3,s=2`$ gives $`A=1/6`$ and forces $`N\ge\lceil4(\epsilon^{-1}-1)\rceil`$ for the resulting rank-two ordinary programmer in dimension four, even though the classification rank exceeds half its dimension.
+
+To cover programming codimension one, fix a known occupied direction instead: $`P=|v\rangle\langle v|\oplus Q`$ with programming rank $`r=s+1`$, classification dimension $`d=r`$ and rank $`s=r-1`$. A known channel outputs $`v`$ with probability $`1/r`$ and otherwise embeds the supplied $`Q/s`$ specimen. Applied independently, this produces exactly $`(P/r)^{\otimes N}`$ from a hard $`N`$ supplied-copy budget. No postselection or expected-budget argument is involved. Routing through eigenvalue $`-1`$ needs only a known control phase correction. The same bound applies with $`s=r-1`$; the remaining pure-qubit endpoint uses the programming pair converse.
+
+These reductions close the ordinary programmer's single-target order $`\Theta(r^2/\epsilon)`$ for every $`1\le r\lt D`$ and $`0\lt\epsilon\le1/8`$. Appending a known flag provides another exact route at programming dimension $`2d`$, as the identity in Section 6 shows. The classification theorem and its experiment remain unchanged: this is a consequence for a stronger channel objective, under an explicitly constructed reduction.
+
+For a batch, fixed extra inputs and discarded extra outputs preserve the single-target guarantee with the same $`N,\epsilon`$. Together with the programming pair converse this gives lower order $`(r^2+rk^2)/\epsilon`$, against upper order $`(r^2k+rk^2)/\epsilon`$. A factor $`k`$ multiplying Q2's rank-squared lower bound is not supplied by this one-test theorem. The classification account owns Q2; the programming account owns the full operational transfer and its channel-law consequence.
+
+## 8. Proof connections across the milestone map
 
 | Milestones | Connection established by this bridge | Canonical destination |
 |---|---|---|
@@ -464,6 +502,6 @@ The resource count follows the experiment's access order. The examples arrive be
 | [M20–M22](milestones.md#m20) | A classical record yields the C1 positivity argument; squared estimation error yields C2 | [Classical compilation](../science/classical_compilation.md) |
 | [M23–M25](milestones.md#m23) | Augmented program copies and channel-error composition attain the lower-bound order | [Construction](../science/constructions.md), [Theorem Q2](../science/quantum_precision.md#theorem-q2-finite-sample-risk-and-copy-complexity) |
 | [M26–M28](milestones.md#m26) | Copy complexity, retained storage, and rank determine the operational comparison | [Classical comparison](../science/classical_compilation.md#4-a-precise-fixed-accuracy-comparison), [interpretation](../science/interpretation.md) |
-| [M29–M30](milestones.md#m29) | The full argument combines inherited tools with the project's exact decision and converse calculations | [Attribution](../references/RELATED_WORK.md), [verification scope](../verification/README.md) |
+| [M29–M30](milestones.md#m29) | The full argument combines inherited tools with the exact decision and converse calculations; an anchored reduction transfers Q2 to a stronger channel objective | [Programming application](../science/programming_application.md), [attribution](../references/RELATED_WORK.md), [verification scope](../verification/README.md) |
 
-At fixed excess risk $`1/16`$ and $`r\le d/2`$, the resulting copy orders are $`\Theta(r^2)`$ for coherent prediction and $`\Theta(rd)`$ for classical compilation. The coherent precision order is $`\Theta(r^2/\varepsilon)`$ throughout $`0<\varepsilon\le1/8`$. When $`cd\le r\le d/2`$ for a fixed positive $`c`$, inclusion of the classical class in the quantum class also gives $`\Theta_c(d^2/\varepsilon)`$ for classical compilation. The remaining general-rank classical precision gap is part of the stated theorem boundary.
+At fixed excess risk $`1/16`$ and $`r\le d/2`$, the resulting copy orders are $`\Theta(r^2)`$ for coherent prediction and $`\Theta(rd)`$ for classical compilation. The coherent precision order is $`\Theta(r^2/\varepsilon)`$ throughout $`0\lt \varepsilon\le1/8`$. When $`cd\le r\le d/2`$ for a fixed positive $`c`$, inclusion of the classical class in the quantum class also gives $`\Theta_c(d^2/\varepsilon)`$ for classical compilation. The remaining general-rank classical precision gap is part of the stated theorem boundary.

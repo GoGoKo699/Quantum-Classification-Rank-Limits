@@ -103,6 +103,8 @@ The reference JSON is a regression record, not an independent proof oracle. The 
 
 ## Limits of verification
 
+The [reflection-programming application](../science/programming_application.md) uses Q2 as an imported converse input. Its distinct circuit checks live with the authoritative transfer proof in [Collective Quantum Programming](https://github.com/GoGoKo699/Collective-Quantum-Programming/blob/c6b5150ce0e7d4f6ac81d171bb7f136ad86a1358/verification/README.md#anchored-classification-transfer). That suite checks 27 finite vacuum, occupied, and flagged embeddings at batch sizes one through three, including full-reference routing, an exact independent source mixture, and a diagnostic channel saturating the conversion from unhalved diamond error to $`E\le A_{d,s}\epsilon`$. These checks do not replace the exact classifier and precision checks in this repository. The all-rank lower-bound transfer and its hard specimen budget follow from the analytical argument, and the intermediate-batch optimum remains unresolved.
+
 The suite checks finite instances of the exact curve and the load-bearing algebra. It does not prove the asymptotic rates from numerical scaling, certify priority, verify experimental noise resilience, or simulate the full sample-based reflection construction. Its diamond-norm error bound and the tomography upper bound are analytical results discussed and attributed in the scientific pages.
 
 No result here establishes the minimum retained quantum memory, reusable-model lifetime, arbitrary-spectrum classification, or a matching classical precision converse. The selected comparison remains unrestricted coherent classification versus classical compilation for one future test drawn from the flat-subspace experiment.

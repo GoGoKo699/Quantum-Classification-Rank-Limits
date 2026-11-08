@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "expressions": [
+    {
+      "path": "science/programming_application.md",
+      "index": 75,
+      "source_sha256": "ec4a38c4f620eb08f6232c6c9fb69fe1152be9897fe6b3660d20987f8f6ad424",
+      "expected_text": "98π2max{r2,rk2}ε≤N∗(D,r,k,ε)≤⌈4π2rk(r+k−1)ε⌉."
+    }
+  ]
+}

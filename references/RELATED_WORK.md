@@ -119,6 +119,14 @@ This comparison is scoped to that uniform statement, not to every result in the 
 
 The quantum-embedding approach explicitly invokes low-rank conditions for efficient spectral classification and has regenerable embeddings of classical data. Those conditions differ from a dimension-uniform guarantee for arbitrary unknown mixed-state sources. The high-rank obstruction here does not contradict an explicitly low-rank result.
 
+## Classification-to-programming converse
+
+[Collective Quantum Programming](https://github.com/GoGoKo699/Collective-Quantum-Programming) asks for the ordinary channel of a support reflection on one or several data registers, programmed by independent flat-state specimens. Its collective construction and pair-discrimination converse concern the full joint diamond norm, a stronger output requirement than one classification label.
+
+The [application here](../science/programming_application.md) supplies the reverse implication needed for a lower bound: on an anchored family, an ordinary programmed reflection gives a controlled support decision with the same hard specimen budget. The effect error retains the factor $`A_{d,s}`$ in the induced classification excess, so the all-rank Q2 converse cancels it and proves the single-target programming order $`r^2/\epsilon`$. The [authoritative operational proof](https://github.com/GoGoKo699/Collective-Quantum-Programming/blob/c6b5150ce0e7d4f6ac81d171bb7f136ad86a1358/science/classification_transfer.md) also treats the codimension-one endpoint and combines this consequence with the existing batch converse. Q2 is the statistical input owned by this repository; the anchored reduction and programming implication belong to that account.
+
+The source-spectrum promise matters in this comparison. General sample-based simulation converses, including [Kimmel et al.](#kimmel2017) and [Go et al., arXiv:2412.02134v3, §V](https://arxiv.org/html/2412.02134v3#S5), permit varying spectra. Substituting the reflection time $`t=\pi r`$ in such a worst-case theorem does not establish a lower bound for a fixed flat-rank family. The transferred Q2 argument supplies that missing restricted-family converse. The known DME upper mechanism and pure-state reflection boundary remain inherited; no full intermediate-batch optimum is asserted.
+
 ## Representation and implementation sources
 
 **Dave Bacon, Isaac L. Chuang and Aram W. Harrow, “Efficient Quantum Circuits for Schur and Clebsch-Gordan Transforms,” Physical Review Letters 97, 170502 (2006).** [Primary preprint](https://arxiv.org/abs/quant-ph/0407082); [DOI](https://doi.org/10.1103/PhysRevLett.97.170502).

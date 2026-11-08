@@ -24,6 +24,10 @@ This is the controlled support reflection on $`C S`$. It is generated from copie
 
 Prepare $`C`$ in $`|+\rangle`$, apply the simulated unitary, apply a Hadamard gate to $`C`$, and measure $`C`$ in the computational basis. For the ideal unitary, outcome $`1`$ has test effect $`P`$, while outcome $`0`$ has effect $`I-P`$. Predict the class state on outcome $`1`$. Its ideal error is $`R_*=r/(2d)`$.
 
+## The converse direction
+
+The known flag above is also an exact interface between the two tasks: $`\sigma_P`$ is flat on the rank-$`r`$ projector $`|1\rangle\langle1|\otimes P`$ in dimension $`2d`$, whose ordinary reflection is the controlled support reflection. Conversely, any sufficiently accurate ordinary-reflection programmer for that enlarged family supplies a classifier. The [converse application](programming_application.md) retains the classification contrast in the error bound and gives a smaller direct-sum embedding using a known eigenstate. It keeps the hard copy budget and the unhalved diamond promise explicit; it does not assume a generic controlled version of an unknown ordinary channel.
+
 ## An explicit simulation bound
 
 Let $`S_{\mathrm{swap}}`$ exchange one data register with one independent program register of state $`\sigma`$. One partial-swap step is the channel
