@@ -368,7 +368,7 @@ For general precision, the statements proved here are
 N_{\mathrm C}(d,r,\varepsilon)
 \ge
 \left\lceil rd\left(1-\frac{\varepsilon}{A_{d,r}}\right)\right\rceil
-\quad(0<\varepsilon<A_{d,r}),
+\quad(0\lt\varepsilon\lt A_{d,r}),
 ```
 
 and
