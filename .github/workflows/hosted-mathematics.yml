@@ -1,0 +1,66 @@
+name: Hosted mathematics
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: hosted-mathematics-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  inspect:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Check out the exact source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Install pinned collector dependencies
+        working-directory: verification/hosted
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Install the collector browser
+        working-directory: verification/hosted
+        run: node node_modules/playwright/cli.js install --with-deps chromium
+      - name: Inspect representative hosted mathematics
+        run: |
+          node verification/hosted/probe_hosted_math.cjs \
+            --root "$GITHUB_WORKSPACE" \
+            --repository "$GITHUB_REPOSITORY" \
+            --revision "$SOURCE_SHA" \
+            --page README.md \
+            --output "$RUNNER_TEMP/hosted-probe"
+      - name: Compare the hosted mathematics with its source
+        run: |
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          node verification/hosted/capture_hosted_math.cjs \
+            --root "$GITHUB_WORKSPACE" \
+            --repository "$GITHUB_REPOSITORY" \
+            --revision "$SOURCE_SHA" \
+            --contract verification/hosted/math-contract.json \
+            --output "$RUNNER_TEMP/hosted-mathematics"
+      - name: Save the report and actual hosted captures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: hosted-mathematics-${{ env.SOURCE_SHA }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/hosted-mathematics
+            ${{ runner.temp }}/hosted-probe
+          if-no-files-found: warn
+          retention-days: 7
