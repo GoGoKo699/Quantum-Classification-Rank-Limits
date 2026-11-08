@@ -34,7 +34,7 @@ This follows by bounding the binary outcome-probability error on every input sta
 ```math
 \begin{aligned}
 R(M_Q,Q)-R_*
-&=\frac12\operatorname{tr}\!\left[(Q-M_Q)
+&=\frac12\mathrm{tr}\!\left[(Q-M_Q)
 \left(\frac Qs-\frac{I_d}{d}\right)\right]\\
 &\le\frac\epsilon4\left\|\frac Qs-\frac{I_d}{d}\right\|_1
 =A_{d,s}\epsilon.
@@ -65,7 +65,7 @@ The exact dimension and source conversions are:
 For the occupied-direction row, if $`V`$ is the known embedding into $`v^\perp`$, use the trace-preserving channel
 
 ```math
-\Lambda(X)=\frac1r\operatorname{tr}(X)|v\rangle\langle v|
+\Lambda(X)=\frac1r\mathrm{tr}(X)|v\rangle\langle v|
 +\frac{r-1}{r}VXV^\dagger,
 \qquad
 \Lambda(Q/(r-1))=P/r.
