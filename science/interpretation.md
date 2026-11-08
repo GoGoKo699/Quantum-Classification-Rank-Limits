@@ -39,7 +39,7 @@ For a fixed accuracy target bounded away from random guessing and the oracle ris
 |---|---:|---:|---:|
 | Fixed $`r`$ | $`\Theta(1)`$ | $`\Theta(d)`$ | $`\Theta(d)`$ |
 | $`r=\mathrm{poly}(n)`$ | $`\Theta(r^2)`$ | $`\Theta(rd)`$ | $`\Theta(d/r)`$ |
-| $`r=d^\alpha`$, fixed $`0<\alpha<1`$ | $`\Theta(d^{2\alpha})`$ | $`\Theta(d^{1+\alpha})`$ | $`\Theta(d^{1-\alpha})`$ |
+| $`r=d^\alpha`$, fixed $`0\lt \alpha\lt 1`$ | $`\Theta(d^{2\alpha})`$ | $`\Theta(d^{1+\alpha})`$ | $`\Theta(d^{1-\alpha})`$ |
 | $`r`$ proportional to $`d`$, with $`r\le d/2`$ | $`\Theta(d^2)`$ | $`\Theta(d^2)`$ | $`\Theta(1)`$ |
 
 Integer rounding of ranks does not change these asymptotic orders. The fixed-rank exponential advantage is already present in quantum-reference work, especially [An's rank-two leakage result](../references/RELATED_WORK.md#an2026). The general-rank optimum quantifies how that advantage decreases with the mixture rank.
@@ -48,7 +48,7 @@ Integer rounding of ranks does not change these asymptotic orders. The fixed-ran
 
 Take even $`d`$ and $`r=d/2`$. A known-projector test succeeds with probability $`3/4`$, so the classes remain distinguishable with constant advantage. The difficult part is learning how to use that contrast from examples.
 
-For every $`0<\varepsilon\le1/8`$,
+For every $`0\lt \varepsilon\le1/8`$,
 
 ```math
 N_{\mathrm Q}(d,d/2,\varepsilon)
@@ -80,7 +80,7 @@ N_{\mathrm C}(d,r,\varepsilon)
 \left\lceil\frac{(4d-3)r}{\varepsilon}\right\rceil
 ```
 
-throughout $`1\le r\le d/2`$, $`0<\varepsilon\le1/8`$, with integer ceilings understood on necessary lower bounds. These inequalities establish the full quantum precision law and the fixed-accuracy classical comparison. They do not determine the complete classical precision law when $`r/d`$ vanishes.
+throughout $`1\le r\le d/2`$, $`0\lt \varepsilon\le1/8`$, with integer ceilings understood on necessary lower bounds. These inequalities establish the full quantum precision law and the fixed-accuracy classical comparison. They do not determine the complete classical precision law when $`r/d`$ vanishes.
 
 ## Rank-independent decisions and resource limits
 
@@ -95,6 +95,12 @@ Its definition contains no rank. Rank affects the amount of information availabl
 The sample comparison assumes native quantum examples. If generating a copy costs $`C_{\mathrm{prep}}`$, that cost is multiplied by the required training budget. The theorem does not assert efficient preparation of arbitrary subspaces or an end-to-end speedup for classical datasets.
 
 Coherent retention also has a storage cost. The direct construction holds $`N\log_2d`$ training qubits before prediction and can consume those systems during the one test. The [resource account](constructions.md) distinguishes this storage from active circuit width. Reusing a trained quantum model and compressing its retained memory are different resource questions.
+
+## Classification precision as a programming obstruction
+
+The normalized learning curve also has an operational use outside prediction. An ordinary reflection programmer with a known eigenstate can be routed into a support-decision measurement. Its effect error is at most half its unhalved diamond error, so its classification excess is at most that channel error times the available contrast. The [all-rank Q2 bound](quantum_precision.md) contains the same contrast, which cancels in the converse.
+
+The [exact application](programming_application.md) therefore closes the single-target flat-rank programming law at $`\Theta(r^2/\epsilon)`$ for every nontrivial rank and ambient dimension. A vacuum sector suffices unless the complement has dimension one; then a known occupied direction and an exact source mixture provide the anchor. This is a transferred consequence of the classification theorem, with the operational proof owned by the programming account. It does not make the two tasks identical: an ordinary channel has a global-phase ambiguity, and the anchored restriction is essential. The stronger batch lower bound still leaves intermediate batches unmatched.
 
 ## Reading the scope correctly
 

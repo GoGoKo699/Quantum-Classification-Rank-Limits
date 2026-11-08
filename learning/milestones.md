@@ -219,7 +219,7 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Central question.** Why does the sign of $`J_N`$ solve the Haar and minimax problems at once?
 
-**Understanding target.** Connect the added content to the eigenvalue of $`J_N=\sum_i\mathrm{SWAP}(i,S)`$, then explain why the sign of $`L(c)-1`$ is the sign of $`c`$. Combine this decision with covariance to establish optimality for every source orientation and every $`r<d`$.
+**Understanding target.** Connect the added content to the eigenvalue of $`J_N=\sum_i\mathrm{SWAP}(i,S)`$, then explain why the sign of $`L(c)-1`$ is the sign of $`c`$. Combine this decision with covariance to establish optimality for every source orientation and every $`r\lt d`$.
 
 **Prerequisites and story role.** M06, M08, M09, M14. This integrates the likelihood, state-discrimination rule, and symmetry into Theorem Q1's exact measurement.
 
@@ -359,7 +359,7 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Central question.** How do converse and construction combine, and on which error and rank domain?
 
-**Understanding target.** State the uniform $`\Theta(r^2/\varepsilon)`$ law with $`1\le r\le d/2`$ and $`0<\varepsilon\le1/8`$, and explain the explicit lower and upper constants. Distinguish that domain from the exact decision's broader domain and from targets attainable with no training.
+**Understanding target.** State the uniform $`\Theta(r^2/\varepsilon)`$ law with $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, and explain the explicit lower and upper constants. Distinguish that domain from the exact decision's broader domain and from targets attainable with no training. Retain the all-rank finite-sample statement $`E_Q\ge A_{d,r}r^2/(N+r^2)`$ for $`N\ge r^2`$, together with its small-budget branch, when using Q2 in another operational problem.
 
 **Prerequisites and story role.** M19, M24. This integrates necessity and attainability into Theorem Q2.
 
@@ -373,7 +373,7 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Central question.** What is matched at fixed accuracy and proportional rank, and what remains unproved?
 
-**Understanding target.** Combine the compiler converse, tomography upper, and inclusion of classical compilers among quantum procedures. Distinguish $`\Theta(rd)`$ at excess error $`1/16`$ for $`r\le d/2`$ from $`\Theta_c(d^2/\varepsilon)`$ for fixed $`0<c\le1/2`$, $`cd\le r\le d/2`$, and $`0<\varepsilon\le1/8`$. Identify the remaining gap for general classical precision.
+**Understanding target.** Combine the compiler converse, tomography upper, and inclusion of classical compilers among quantum procedures. Distinguish $`\Theta(rd)`$ at excess error $`1/16`$ for $`r\le d/2`$ from $`\Theta_c(d^2/\varepsilon)`$ for fixed $`0\lt c\le1/2`$, $`cd\le r\le d/2`$, and $`0\lt \varepsilon\le1/8`$. Identify the remaining gap for general classical precision.
 
 **Prerequisites and story role.** M21, M22, M25. This assembles the two learner classes under common risk and access conventions.
 
@@ -411,17 +411,17 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 ### M29
 
-**Evidence and attribution**
+**Converse transfer, evidence, and attribution**
 
 **Central question.** Which ingredients are inherited, which statements are new derivations here, and what do finite checks establish?
 
-**Understanding target.** Separate the project's exact likelihood and classification converses from established fixed-rank advantages, symmetry tools, simulation, and tomography. Compare operational objectives before transferring a previous theorem, and distinguish finite consistency checks from analytical proof or a priority guarantee.
+**Understanding target.** Separate the project's exact likelihood and classification converses from established fixed-rank advantages, symmetry tools, simulation, and tomography. Explain how an anchored ordinary reflection programmer induces a classifier with the same hard $`N`$ and excess risk at most $`A_{d,s}\epsilon`$: a known eigenstate fixes the control phase, the effect error is at most $`\epsilon/2`$, and the exact contrast cancels against Q2. Track programming dimension $`D=d+1`$ for a vacuum and the occupied-direction hard-budget mixture at $`D=r+1`$. Distinguish this valid converse transfer from a generic ordinary-to-controlled conversion, an extra factor $`k`$ for multiple targets, finite consistency checks, or a priority guarantee.
 
-**Prerequisites and story role.** M15, M19, M21, M22, M24, M28. This integrates the result with its primary-source context and the actual evidentiary support.
+**Prerequisites and story role.** M07, M15, M19, M21, M22, M23, M24, M25, M28. This connects the classification theorem to a stronger channel task through an explicit reduction, while retaining its primary-source ownership and evidentiary limits.
 
-**Conceptual connection.** Similar access orders or asymptotic expressions do not make different tasks equivalent. Attribution and verification are strongest when their scope matches the precise claim being assessed.
+**Conceptual connection.** A channel guarantee can be reduced to this classification experiment without imposing a channel objective on competing classifiers. That direction of implication lets Q2 constrain ordinary reflection programming, while its exact dimension, chronology and error promises remain load-bearing. Attribution and verification must match that precise consequence.
 
-**Source pointers.** [Related work](../references/RELATED_WORK.md), especially the An2026, Li2026, O'Donnell–Wright, and Kimmel comparisons; [verification guide](../verification/README.md). The source comparison is bounded and does not certify exhaustive priority.
+**Source pointers.** [Programming application](../science/programming_application.md); [Watrous bridge, Section 7](watrous_bridge.md#7-from-classification-precision-to-a-programming-converse); [related work](../references/RELATED_WORK.md), especially the An2026, Li2026, O'Donnell–Wright, and Kimmel comparisons; [verification guide](../verification/README.md). The source comparison is bounded and does not certify exhaustive priority.
 
 ### M30
 
@@ -429,10 +429,10 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Central question.** How do optimal decision, unavoidable cost, access order, and physical resources fit into one result?
 
-**Understanding target.** Explain the complete scientific story from the flat-state training experiment to the rank-independent optimal measurement, sharp quantum precision law, classical comparison, and high-rank limit. Keep the uniform domains, one-test objective, charged construction, and unresolved classical precision and memory questions explicit.
+**Understanding target.** Explain the complete scientific story from the flat-state training experiment to the rank-independent optimal measurement, sharp quantum precision law, classical comparison, and high-rank limit. Explain the converse's application to the matched single-target ordinary-reflection law through the anchored reduction. Keep the classification uniform domains, one-test objective, charged construction, unresolved classical precision and memory questions, and remaining intermediate programming gap explicit.
 
 **Prerequisites and story role.** M12, M25, M26, M27, M28, M29. This is the global synthesis of the narrative phase and of the whole project.
 
-**Conceptual connection.** The central result concerns how much prediction-relevant information survives in coherent examples compared with a classical record. Its exact decision, sample laws, implementation, and limitations answer different parts of that single operational question.
+**Conceptual connection.** The central result concerns how much prediction-relevant information survives in coherent examples compared with a classical record. Its exact decision, sample laws, implementation, and limitations answer different parts of that single operational question. The programming application shows why the same statistical obstruction also limits a stronger coherent operation; it does not identify the two tasks or alter the classification objective.
 
 **Source pointers.** [Model](../science/model.md), [exact classifier](../science/exact_classifier.md), [quantum precision](../science/quantum_precision.md), [classical compilation](../science/classical_compilation.md), [construction](../science/constructions.md), and [interpretation](../science/interpretation.md); [Watrous bridge](watrous_bridge.md) for the connection to the selected anchor.

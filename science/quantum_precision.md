@@ -12,7 +12,7 @@ This page proves finite-sample lower bounds on that risk and the resulting optim
 
 ## Theorem Q2: finite-sample risk and copy complexity
 
-Let $`1\le r<d`$ and $`N\ge0`$ be integers. In the model of [Theorem Q1](exact_classifier.md),
+Let $`1\le r\lt d`$ and $`N\ge0`$ be integers. In the model of [Theorem Q1](exact_classifier.md),
 
 ```math
 E_Q(N;d,r)\ge A_{d,r}
@@ -36,7 +36,7 @@ N_Q(d,r,\epsilon)
 =\min\{N\in\mathbb Z_{\ge0}:E_Q(N;d,r)\le\epsilon\}.
 ```
 
-For every $`0<\epsilon\le A_{d,r}/2`$,
+For every $`0\lt \epsilon\le A_{d,r}/2`$,
 
 ```math
 \left\lceil r^2\left(\frac{A_{d,r}}{\epsilon}-1\right)\right\rceil
@@ -283,7 +283,7 @@ Ignoring the training and guessing one class has excess risk $`A_{d,r}`$. Choosi
 
 ## 6. Explicit copy-complexity range
 
-Suppose $`0<\epsilon\le A_{d,r}/2`$. If $`N<r^2`$, the first lower bound is strictly greater than $`A_{d,r}/2`$, so such a budget cannot achieve the target. For $`N\ge r^2`$, the precision bound requires
+Suppose $`0\lt \epsilon\le A_{d,r}/2`$. If $`N\lt r^2`$, the first lower bound is strictly greater than $`A_{d,r}/2`$, so such a budget cannot achieve the target. For $`N\ge r^2`$, the precision bound requires
 
 ```math
 \epsilon\ge A_{d,r}\frac{r^2}{N+r^2},
@@ -311,7 +311,7 @@ For $`r=1`$, the exact formula from Theorem Q1 is
 E_Q(N;d,1)=\frac{A_{d,1}}{N+1}.
 ```
 
-Thus the precision lower bound is an equality for every $`N\ge1`$ in the pure-state case. At $`N=0`$, the separate small-budget bound is also exact. For every $`r<d`$, the lower bounds are positive at finite budget, so exact attainment of the known-projector risk requires an unbounded supply of training copies.
+Thus the precision lower bound is an equality for every $`N\ge1`$ in the pure-state case. At $`N=0`$, the separate small-budget bound is also exact. For every $`r\lt d`$, the lower bounds are positive at finite budget, so exact attainment of the known-projector risk requires an unbounded supply of training copies.
 
 At the opposite end of the stated uniform range, take even $`d`$ and $`r=d/2`$. The known-projector success is $`3/4`$, while
 
@@ -323,3 +323,7 @@ N_Q(d,d/2,\epsilon)=\Theta(d^2/\epsilon)
 The two test classes therefore retain a constant available advantage, yet coherent retention does not remove the dimension dependence of learning from their mixed-state training source.
 
 This is a copy-complexity statement for one future test. It does not determine the minimum quantum memory required to attain the bound, or the lifetime of a reusable quantum model. The [resource analysis](constructions.md) charges the stored training systems used by the stated construction. The fixed-accuracy classical-compiler comparison and the precise relationship to earlier quantum-reference advantages are described in [Related work](../references/RELATED_WORK.md) and the corresponding topic proofs.
+
+## Application to ordinary reflection programming
+
+The finite-sample theorem applies at every $`1\le r\lt d`$, even when the available contrast is small. The [programming application](programming_application.md) uses the relative tolerance $`\delta=A_{d,r}\epsilon`$, rather than a fixed absolute tolerance. An anchored ordinary-reflection channel induces a classification effect with excess risk at most this value. Substitution into Q2 cancels $`A_{d,r}`$ and yields the rank-squared specimen lower bound for that programming task. This is an operational consequence of Q2, with its full reduction proved in the linked programming account; it does not alter the classification theorem or its absolute-risk promise.

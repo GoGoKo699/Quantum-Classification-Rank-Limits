@@ -6,7 +6,7 @@ The optimal decision has a particularly simple form: measure the sign of the sum
 
 ## Theorem Q1: exact minimax decision and value
 
-Let $`N\ge 0`$ and $`1\le r<d`$ be integers. Define
+Let $`N\ge 0`$ and $`1\le r\lt d`$ be integers. Define
 
 ```math
 J_N=\sum_{i=1}^{N}V_{(i,N+1)},
@@ -49,7 +49,7 @@ Here:
 - $`\lambda\nearrow\mu`$ means that $`\mu`$ is obtained by adding one box to $`\lambda`$.
 - The content of a box in row $`i`$ and column $`j`$ is $`c=j-i`$, and $`x_+=\max(x,0)`$.
 
-All Young-diagram successors are included in the inner sum. Because $`\ell(\lambda)\le r<d`$, every such successor has at most $`d`$ rows and is physically present in the $`d`$-dimensional tensor space. The empty partition has $`f_\varnothing=D_\varnothing(k)=1`$.
+All Young-diagram successors are included in the inner sum. Because $`\ell(\lambda)\le r\lt d`$, every such successor has at most $`d`$ rows and is physically present in the $`d`$-dimensional tensor space. The empty partition has $`f_\varnothing=D_\varnothing(k)=1`$.
 
 For a known projector, the support measurement $`\{P,I-P\}`$ has optimal success
 
@@ -254,7 +254,7 @@ H_1-H_0=\frac{d-r}{r}\,H_0J_N(dI+J_N)^{-1}.
 
 Both hypotheses vanish on the complementary support; no likelihood is required there.
 
-Its sign is exactly the sign of $`c`$, establishing the Haar-optimal effect $`T_N^\star`$. The choice is independent of rank because the prefactor and denominator are positive for every $`r<d`$ on its populated blocks.
+Its sign is exactly the sign of $`c`$, establishing the Haar-optimal effect $`T_N^\star`$. The choice is independent of rank because the prefactor and denominator are positive for every $`r\lt d`$ on its populated blocks.
 
 ## 4. From Haar optimality to worst-case optimality
 

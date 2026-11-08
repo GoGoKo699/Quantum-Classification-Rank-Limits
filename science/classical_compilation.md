@@ -6,7 +6,7 @@ This section proves the converse for that entire class and gives an explicit con
 
 ## 1. Task and compiler class
 
-Let $`P`$ be an unknown rank-$`r`$ orthogonal projector on $`\mathbb C^d`$, with $`1\le r<d`$, and put
+Let $`P`$ be an unknown rank-$`r`$ orthogonal projector on $`\mathbb C^d`$, with $`1\le r\lt d`$, and put
 
 ```math
 \rho_P=\frac{P}{r}.
@@ -40,7 +40,7 @@ The error criterion is expected classification risk, not a high-probability guar
 
 ## 2. Theorem C1: converse for every collective compiler
 
-**Theorem C1.** For every $`1\le r<d`$, every integer $`N\ge0`$, and every classical compiler in the class above, its Haar-averaged success probability satisfies
+**Theorem C1.** For every $`1\le r\lt d`$, every integer $`N\ge0`$, and every classical compiler in the class above, its Haar-averaged success probability satisfies
 
 ```math
 \overline p_{\mathrm C}
@@ -383,7 +383,7 @@ The first bound alone does not establish an inverse-$`\varepsilon`$ classical lo
 
 ### Corollary C3: combined lower bound and proportional rank
 
-For $`1\le r\le d/2`$ and $`0<\varepsilon\le1/8`$, the [quantum precision theorem](quantum_precision.md) gives
+For $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, the [quantum precision theorem](quantum_precision.md) gives
 
 ```math
 N_{\mathrm C}(d,r,\varepsilon)
@@ -406,7 +406,7 @@ rd\left(1-\frac{\varepsilon}{A_{d,r}}\right)
 \qquad\text{(C3.4)}
 ```
 
-In particular, fix any constant $`c\in(0,1/2]`$ and take $`cd\le r\le d/2`$. The first lower bound in (C3.4) is at least $`c^2d^2/(8\varepsilon)`$, while its upper bound is at most $`2d^2/\varepsilon`$ before integer rounding. Therefore, uniformly over $`0<\varepsilon\le1/8`$,
+In particular, fix any constant $`c\in(0,1/2]`$ and take $`cd\le r\le d/2`$. The first lower bound in (C3.4) is at least $`c^2d^2/(8\varepsilon)`$, while its upper bound is at most $`2d^2/\varepsilon`$ before integer rounding. Therefore, uniformly over $`0\lt \varepsilon\le1/8`$,
 
 ```math
 N_{\mathrm C}(d,r,\varepsilon)

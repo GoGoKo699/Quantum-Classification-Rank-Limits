@@ -6,7 +6,7 @@ This project solves the coherent decision problem for states that are uniform on
 
 ## Experiment and information access
 
-Let $`d\ge2`$ and $`1\le r<d`$ be integers. An unknown rank-$`r`$ orthogonal projector $`P`$ acts on $`\mathbb C^d`$. Define
+Let $`d\ge2`$ and $`1\le r\lt d`$ be integers. An unknown rank-$`r`$ orthogonal projector $`P`$ acts on $`\mathbb C^d`$. Define
 
 ```math
 \rho_P=\frac{P}{r},
@@ -99,9 +99,9 @@ The statements below use $`1\le r\le d/2`$, so the oracle advantage is at least 
 
 | Result | Precise content | Authoritative proof |
 |---|---|---|
-| Q1: exact optimum | The positive spectral projector of $`J=\sum_{i=1}^{N}\mathrm{SWAP}(i,S)`$ is minimax optimal for every flat rank $`r<d`$. | [Exact classifier](exact_classifier.md) |
+| Q1: exact optimum | The positive spectral projector of $`J=\sum_{i=1}^{N}\mathrm{SWAP}(i,S)`$ is minimax optimal for every flat rank $`r\lt d`$. | [Exact classifier](exact_classifier.md) |
 | Learning-curve factorization | $`p_{\mathrm Q}=1/2+A_{d,r}F_{N,r}`$, with $`F_{N,r}`$ independent of $`d`$. | [Exact classifier](exact_classifier.md) |
-| Q2: quantum precision | For $`1\le r\le d/2`$ and $`0<\varepsilon\le1/8`$, $`r^2/(8\varepsilon)\le N_{\mathrm Q}(d,r,\varepsilon)\le\lceil2\pi^2r^2/\varepsilon\rceil`$. | [Quantum precision](quantum_precision.md) and [construction](constructions.md) |
+| Q2: quantum precision | For $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, $`r^2/(8\varepsilon)\le N_{\mathrm Q}(d,r,\varepsilon)\le\lceil2\pi^2r^2/\varepsilon\rceil`$. | [Quantum precision](quantum_precision.md) and [construction](constructions.md) |
 | C1: all classical compilers | $`p_{\mathrm C}-1/2\le A_{d,r}N/(rd)`$. | [Classical compilation](classical_compilation.md) |
 | C2: classical construction | $`E_{\mathrm C}\le(4d-3)r/N`$ for $`N\ge1`$. | [Classical compilation](classical_compilation.md) |
 
@@ -111,9 +111,11 @@ The exact quantum decision rule does not require $`r`$. The sample budget and th
 
 ## Boundaries and resources
 
-At $`N=0`$, the minimax success is $`1/2`$. At $`r=d`$, the two classes coincide and the task is trivial. Exact formulas for $`r<d`$ remain valid beyond $`r\le d/2`$, but the constant-accuracy complexity statements require an oracle advantage bounded away from zero.
+At $`N=0`$, the minimax success is $`1/2`$. At $`r=d`$, the two classes coincide and the task is trivial. Exact formulas for $`r\lt d`$ remain valid beyond $`r\le d/2`$, but the constant-accuracy complexity statements require an oracle advantage bounded away from zero.
 
 The direct coherent construction stores $`N\log_2d`$ training qubits when $`d`$ is a power of two. Its small active interaction width does not reduce that offline storage. Source preparation adds its actual per-copy cost. The [construction and resource account](constructions.md) specify these charges.
 
 The [interpretation](interpretation.md) explains the high-rank obstruction and the relation to dimension-independent learning claims. [Related work](../references/RELATED_WORK.md) separates the new decision and precision laws from inherited fixed-rank advantages, representation tools, simulation and tomography. [Verification](../verification/README.md) documents finite checks and their limits.
 
+
+The [ordinary-reflection programming application](programming_application.md) uses this exact experiment as a receiving task for an anchored channel reduction. It supplies the same hard number of training copies before one test and keeps the $`I_d/d`$ background in the classification dimension. It is a consequence of Q2 under a specified operational interface, not a change to the learning model.
