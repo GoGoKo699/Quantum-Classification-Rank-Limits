@@ -399,7 +399,7 @@ The [precision converse C3](../science/classical_compilation.md#theorem-c3-unifo
 \frac{r I}{d+L}\preceq B\preceq\frac{(r+L)I}{d+L}.
 ```
 
-Since $`\operatorname{Tr}B=r`$, for $`L>0`$ the operator $`C=((d+L)B-rI)/L`$ is a positive contraction of trace $`r`$. It is a convex mixture of rank-$`r`$ projectors, so its normalized state $`C/r`$ offers at most the oracle advantage $`A_{d,r}`$ against $`I/d`$. The actual posterior test differs from the background by
+Since $`\mathrm{Tr}B=r`$, for $`L>0`$ the operator $`C=((d+L)B-rI)/L`$ is a positive contraction of trace $`r`$. It is a convex mixture of rank-$`r`$ projectors, so its normalized state $`C/r`$ offers at most the oracle advantage $`A_{d,r}`$ against $`I/d`$. The actual posterior test differs from the background by
 
 ```math
 \frac{B}{r}-\frac{I}{d}=\frac{L}{d+L}\left(\frac{C}{r}-\frac{I}{d}\right).
