@@ -1,6 +1,6 @@
 # Reproduce the finite-size checks
 
-This suite checks consequential finite cases of the [exact classifier](../science/exact_classifier.md), [quantum precision bound](../science/quantum_precision.md), and classical compiler argument. It combines exact rational calculations with an independent construction of small Haar-averaged density matrices. The proofs in `science/` establish the general statements; passing these checks does not replace those proofs.
+This suite checks finite cases of the [exact classifier](../science/exact_classifier.md), [quantum precision bound](../science/quantum_precision.md), and [classical precision bound](../science/classical_compilation.md). It combines exact rational calculations with an independent construction of small Haar-averaged density matrices. The proofs in `science/` establish the general statements.
 
 ## Run
 
@@ -34,6 +34,7 @@ Every check uses explicit exceptions rather than disableable Python `assert` sta
 | Haar twirls | Independent permutation-Gram construction, with the linear system solved over rational numbers | Circular validation of Schur formulas by another implementation of the same formulas |
 | Rank-blind decision | Direct matrix Helstrom value compared with the positive spectral projector of `J`, including a prior mixture of ranks | Incorrect sign convention or an unjustified rank-independent decision rule |
 | Classical compiler inequality | Exact branch slacks, full matrix positivity, and informative collective-training examples | Missing symmetrization, invalid positivity of `E_y A_N`, or an incorrect swap/partial-trace identity |
+| Classical precision converse | Exact sector operator bounds, independently constructed posterior spectra and test advantages, and the pure-state equality case | An incorrect first-row endpoint, posterior normalization, or conversion to excess error |
 | Reference results | Exact rational outputs compared with the committed JSON | Unnoticed changes in formulas, fixtures, or the checked regime |
 
 ### Exact arithmetic and boundary cases
@@ -88,7 +89,13 @@ The compiler checks include a one-training-copy computational-basis measurement 
 
 For two training copies, deterministic rotations of basis states produce a training POVM with genuinely entangled effects and nonzero classification information. Its effects need not commute with `A_N` before permutation averaging. The checks verify that averaging leaves the decision statistics unchanged, makes `E_y A_N` positive, preserves normalization, and permits the swap/partial-trace estimate in the proof. The later test measurement is optimized for each resulting classical record.
 
-These examples check the algebra for collective training measurements. They are not an optimization over every possible compiler, and do not numerically prove the all-compiler converse.
+For the precision converse, the exact branch checks use the first-row length of the training partition to test both sides of the Schur-sector operator inequality. The independent matrix checks diagonalize the sum of training swaps to resolve nine supported sectors in seven cases, including the mixed-rank sector $`\lambda=(2,1)`$. Contracting the Haar joint state with 91 complex rank-one training effects checks the posterior trace and spectral endpoints, the optimal conditional test advantage, and the averaged excess-error bound. The pure-state covariant measurement seed also attains the exact compiler excess error.
+
+```math
+E_{\mathrm C}(N;d,1)=A_{d,1}\frac{d}{d+N}.
+```
+
+The matrix examples use finite collections of explicit training effects. The analytical converse applies to every allowed training measurement and later test effect.
 
 ## Files and reference values
 
@@ -107,4 +114,4 @@ The [reflection-programming application](../science/programming_application.md) 
 
 The suite checks finite instances of the exact curve and the load-bearing algebra. It does not prove the asymptotic rates from numerical scaling, certify priority, verify experimental noise resilience, or simulate the full sample-based reflection construction. Its diamond-norm error bound and the tomography upper bound are analytical results discussed and attributed in the scientific pages.
 
-No result here establishes the minimum retained quantum memory, reusable-model lifetime, arbitrary-spectrum classification, or a matching classical precision converse. The selected comparison remains unrestricted coherent classification versus classical compilation for one future test drawn from the flat-subspace experiment.
+The copy-complexity comparison concerns one future test in the flat-subspace experiment. Minimum retained quantum memory, reusable-model lifetime, and arbitrary-spectrum classification remain open in this model.

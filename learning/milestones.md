@@ -293,7 +293,7 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Prerequisites and story role.** M04, M10, M12, M13. This identifies the structural step needed to cover the entire classical compiler class.
 
-**Conceptual connection.** Symmetry provides an analytical simplification of arbitrary collective measurements without restricting their decision performance or classical outcome space.
+**Conceptual connection.** Symmetry provides an analytical simplification of arbitrary collective measurements without restricting their decision performance or classical outcome space. A compiler may also record the Schur sector because its training states are block-diagonal in that decomposition. The precision proof uses this refinement.
 
 **Source pointers.** [Classical compilation, §2.2](../science/classical_compilation.md); Watrous [§7.1.2](https://jhwatrous.github.io/TQI.7.pdf), for the commutant framework.
 
@@ -369,17 +369,17 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 ### M26
 
-**Classical comparison and its precision gap**
+**The classical precision law**
 
-**Central question.** What is matched at fixed accuracy and proportional rank, and what remains unproved?
+**Central question.** Why does reducing excess error increase the classical copy budget in inverse proportion to the target error?
 
-**Understanding target.** Combine the compiler converse, tomography upper, and inclusion of classical compilers among quantum procedures. Distinguish $`\Theta(rd)`$ at excess error $`1/16`$ for $`r\le d/2`$ from $`\Theta_c(d^2/\varepsilon)`$ for fixed $`0\lt c\le1/2`$, $`cd\le r\le d/2`$, and $`0\lt \varepsilon\le1/8`$. Identify the remaining gap for general classical precision.
+**Understanding target.** Refine the training record by the Schur diagram $`\lambda`$. Explain how the two-sided likelihood bound writes the conditional source as a mixture of the maximally mixed state and a normalized mixture of rank-$`r`$ projectors. Combine the first-row bound with the tomography upper to obtain $`\Theta(rd/\varepsilon)`$ copies for $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$.
 
-**Prerequisites and story role.** M21, M22, M25. This assembles the two learner classes under common risk and access conventions.
+**Prerequisites and story role.** M14, M20, M21, M22, M25. This assembles the two learner classes under common risk and access conventions.
 
-**Conceptual connection.** Matching quantum precision does not automatically imply matching classical precision. The high-rank classical law follows because the inherited quantum lower becomes strong enough to meet the classical construction there.
+**Conceptual connection.** An arbitrary binary test can only use the fraction of oracle contrast that remains after training. For budgets at least of order $`rd`$, the mean first row is of order $`N/r`$, so reducing excess risk to $`\varepsilon`$ forces a copy budget of order at least $`rd/\varepsilon`$.
 
-**Source pointers.** [Classical compilation, §4 and Corollary C3](../science/classical_compilation.md); [interpretation, classical and high-rank comparisons](../science/interpretation.md).
+**Source pointers.** [Classical compilation, Theorem C3](../science/classical_compilation.md#theorem-c3-uniform-classical-precision); [Watrous bridge, §5](watrous_bridge.md#5-what-changes-when-training-leaves-only-a-classical-record); [interpretation](../science/interpretation.md#the-cost-of-classicalizing-the-training-data).
 
 ### M27
 
@@ -401,7 +401,7 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Central question.** Why does the copy advantage disappear at high rank while Bayes contrast stays finite?
 
-**Understanding target.** Interpret the fixed-accuracy ratio $`d/r`$ across fixed, intermediate, and proportional ranks. Explain why $`r=d/2`$ leaves oracle success $`3/4`$ while both classes require order $`d^2/\varepsilon`$ copies in the stated range, and what this implies for a dimension-uniform learning claim under this access model.
+**Understanding target.** Interpret the copy ratio $`d/r`$ across fixed, intermediate, and proportional ranks throughout the precision range. Explain why $`r=d/2`$ leaves oracle success $`3/4`$ while both classes require order $`d^2/\varepsilon`$ copies in the stated range, and what this implies for a dimension-uniform learning claim under this access model.
 
 **Prerequisites and story role.** M16, M26, M27. This connects the separate theorems to the physical meaning of rank and coherent retention.
 
@@ -429,7 +429,7 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Central question.** How do optimal decision, unavoidable cost, access order, and physical resources fit into one result?
 
-**Understanding target.** Explain the complete scientific story from the flat-state training experiment to the rank-independent optimal measurement, sharp quantum precision law, classical comparison, and high-rank limit. Explain the converse's application to the matched single-target ordinary-reflection law through the anchored reduction. Keep the classification uniform domains, one-test objective, charged construction, unresolved classical precision and memory questions, and remaining intermediate programming gap explicit.
+**Understanding target.** Explain the complete scientific story from the flat-state training experiment to the rank-independent optimal measurement, matching quantum and classical precision laws, and high-rank limit. Explain the converse's application to the matched single-target ordinary-reflection law through the anchored reduction. Keep the classification uniform domains, one-test objective, charged construction, unresolved memory and reuse questions, and remaining intermediate programming gap explicit.
 
 **Prerequisites and story role.** M12, M25, M26, M27, M28, M29. This is the global synthesis of the narrative phase and of the whole project.
 

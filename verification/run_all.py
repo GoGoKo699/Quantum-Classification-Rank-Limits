@@ -42,6 +42,7 @@ def main() -> int:
     print("PASS: exact Schur likelihoods, normalized curves, content moments and precision bounds")
     print("PASS: independent permutation-Gram Haar twirls, rank-blind decisions and support edges")
     print("PASS: classical operator inequality and collective-training compiler examples")
+    print("PASS: Schur-sector posterior contraction and exact pure-state compiler risk")
     print("PASS: committed exact reference results match expected.json")
     print(f"Largest matrix residual: {diagnostics['largest_matrix_residual']:.3e} "
           f"(tolerance {diagnostics['absolute_tolerance']:.1e})")

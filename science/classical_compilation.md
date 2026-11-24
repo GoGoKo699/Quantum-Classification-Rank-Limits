@@ -1,8 +1,8 @@
 # Classical compilation of the training examples
 
-A classical compiler may perform an arbitrary collective measurement on all training examples. Its restriction is that only a classical record remains when the test arrives. Even with unlimited classical memory, computation, and record-dependent test measurements, recovering a fixed positive fraction of the known-projector advantage requires at least order $`rd`$ training examples, where $`r`$ is the rank and $`d`$ is the ambient dimension.
+A classical compiler may perform an arbitrary collective measurement on all training examples. Its restriction is that only a classical record remains when the test arrives. Even with unlimited classical memory, computation, and record-dependent test measurements, the required training budget is $`\Theta(rd/\varepsilon)`$ for rank $`1\le r\le d/2`$, ambient dimension $`d`$, and excess error $`0\lt\varepsilon\le1/8`$ above the known-projector optimum.
 
-This section proves the converse for that entire class and gives an explicit construction based on collective state tomography. The [model](model.md) specifies the access order and risk. The [exact classifier](exact_classifier.md) supplies the likelihood identity used below; the [quantum precision theorem](quantum_precision.md) and [constructions](constructions.md) give the corresponding coherent results.
+The converse controls the posterior mean of the unknown projector for every training record. A construction based on collective state tomography attains the order of the bound. The [model](model.md) specifies the access order and risk. The [exact classifier](exact_classifier.md) supplies the likelihood identity used below; the [quantum precision theorem](quantum_precision.md) and [constructions](constructions.md) give the corresponding coherent results.
 
 ## 1. Task and compiler class
 
@@ -324,111 +324,132 @@ Taking the expectation and applying (C2.1) proves (C2.2). The additional option 
 
 This construction concerns sample complexity. It allows the collective tomography measurement and a classical matrix record of unrestricted size, exactly as the compiler model permits. It requires neither a state-preparation oracle nor quantum random access to classical training data.
 
-## 4. A precise fixed-accuracy comparison
+## 4. Classical precision
 
-Define
+Define the minimum training budget for excess error at most $`\varepsilon`$ by
 
 ```math
 N_{\mathrm C}(d,r,\varepsilon)
 :=\min\{N:E_{\mathrm C}(N;d,r)\le\varepsilon\}.
 ```
 
-Take the numerical target $`\varepsilon_0=1/16`$ and restrict $`1\le r\le d/2`$. In this range $`A_{d,r}\ge1/4`$. Theorem C1 implies
+### Theorem C3: uniform classical precision
+
+Let $`\lambda_1`$ be the first row length from a weak Schur measurement on $`N`$ copies of $`P/r`$. Its law depends only on $`N,r`$. For every $`1\le r\lt d`$ and integer $`N\ge0`$,
 
 ```math
-N_{\mathrm C}(d,r,1/16)
-\ge
-\left\lceil rd\left(1-\frac{1}{16A_{d,r}}\right)\right\rceil
-\ge
-\left\lceil\frac34rd\right\rceil.
+E_{\mathrm C}(N;d,r)
+\ge A_{d,r}\,\mathbb E\frac{d}{d+\lambda_1}
+\ge A_{d,r}\,\frac{d}{d+N/r+2\sqrt N}.
 \qquad\text{(C3.1)}
 ```
 
-Theorem C2 supplies the sufficient budget
+For $`1\le r\le d/2`$ and $`0\lt\varepsilon\le1/8`$, this gives a matching precision law with universal constants:
 
 ```math
-N_{\mathrm C}(d,r,1/16)
-\le
-\left\lceil16r(4d-3)\right\rceil.
+\left\lceil \frac{rd}{20\varepsilon}\right\rceil
+\le N_{\mathrm C}(d,r,\varepsilon)
+\le\left\lceil\frac{(4d-3)r}{\varepsilon}\right\rceil.
 \qquad\text{(C3.2)}
 ```
 
-Hence, with universal constants and with the same excess-risk target for every admissible rank and dimension,
+The lower bound applies to arbitrary collective training measurements, with unlimited classical storage and any binary test measurement. In the same regime, the [coherent law](quantum_precision.md) is $`N_{\mathrm Q}=\Theta(r^2/\varepsilon)`$, so $`N_{\mathrm C}/N_{\mathrm Q}=\Theta(d/r)`$ throughout the precision range.
+
+### 4.1 The posterior in one Schur sector
+
+Use the Haar prior and the symmetrized training measurement from Section 2.2. Refine each outcome by its Schur sector $`\lambda`$ by splitting the block-diagonal density $`e_y`$ into its positive blocks. The compiler can still use its original test effect and gains the freedom to select a different effect for each refined record. An upper bound on the advantage of the refined compiler therefore bounds the original advantage. This works with either discrete or continuous records.
+
+Write $`F_{\lambda,y}`$ for the $`\lambda`$ block of $`F_y=e_y A_N`$, extended by zero. For a record with $`p_{\lambda,y}=\mathrm{Tr}F_{\lambda,y}>0`$, let $`B_{\lambda,y}=\mathbb E[P\mid\lambda,y]`$. Here $`p_{\lambda,y}`$ is the density of the record under the Haar prior and $`B_{\lambda,y}/r`$ is the state of the test under the class hypothesis conditioned on that record. The competing test state is $`I/d`$.
+
+The swap sum $`J`$ on the $`\lambda`$ training sector tensored with the test has eigenvalues equal to the contents of the addable boxes in $`\lambda`$. Only diagrams with at most $`r`$ rows have positive weight under $`A_N`$, so those contents belong to $`[-r,\lambda_1]`$. For $`x`$ in this interval, $`r+x\ge0`$ and $`(r+x)/(d+x)`$ increases with $`x`$. It follows that
 
 ```math
-\boxed{N_{\mathrm C}(d,r,1/16)=\Theta(rd).}
+\frac{r+x}{d+\lambda_1}
+\le \frac{r+x}{d+x}
+\le \frac{r+\lambda_1}{d+\lambda_1}.
 \qquad\text{(C3.3)}
 ```
 
-The [quantum precision theorem](quantum_precision.md) gives $`N_{\mathrm Q}(d,r,1/16)=\Theta(r^2)`$. The fixed-accuracy sample advantage from retaining the training systems is therefore of order $`d/r`$. It is large at low rank and becomes a constant factor when rank is proportional to the ambient dimension.
-
-For general precision, the statements proved here are
+For any unit test vector $`v`$, use $`M=|v\rangle\langle v|`$. By (C1.3), the posterior satisfies
 
 ```math
-N_{\mathrm C}(d,r,\varepsilon)
-\ge
-\left\lceil rd\left(1-\frac{\varepsilon}{A_{d,r}}\right)\right\rceil
-\quad(0\lt\varepsilon\lt A_{d,r}),
+\langle v|B_{\lambda,y}|v\rangle
+=
+\frac{1}{p_{\lambda,y}}
+\mathrm{Tr}\left[
+(F_{\lambda,y}\otimes M)\frac{r+J}{d+J}
+\right].
 ```
 
-and
+Functional calculus gives the upper bound from (C3.3) because $`F_{\lambda,y}\otimes M\succeq0`$. For the lower bound, each swap contributes nonnegatively by (C1.8):
 
 ```math
-N_{\mathrm C}(d,r,\varepsilon)
-\le
-\left\lceil\frac{(4d-3)r}{\varepsilon}\right\rceil.
+\mathrm{Tr}[(F_{\lambda,y}\otimes M)J]
+=
+\sum_{i=1}^N\mathrm{Tr}[F_{\lambda,y}^{(i)}M]
+\ge 0.
 ```
 
-The first bound alone does not establish an inverse-$`\varepsilon`$ classical lower bound. A second lower bound follows from the inclusion of classical compilers in the unrestricted quantum class.
-
-### Corollary C3: combined lower bound and proportional rank
-
-For $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, the [quantum precision theorem](quantum_precision.md) gives
+Since this holds for every $`v`$, the posterior obeys the operator bounds
 
 ```math
-N_{\mathrm C}(d,r,\varepsilon)
-\ge N_{\mathrm Q}(d,r,\varepsilon)
-\ge\left\lceil\frac{r^2}{8\varepsilon}\right\rceil.
-```
-
-Combining this with Theorems C1 and C2 yields
-
-```math
-\left\lceil
-\max\left\{
-\frac{r^2}{8\varepsilon},
-rd\left(1-\frac{\varepsilon}{A_{d,r}}\right)
-\right\}
-\right\rceil
-\le N_{\mathrm C}(d,r,\varepsilon)
-\le
-\left\lceil\frac{(4d-3)r}{\varepsilon}\right\rceil.
+\frac{r}{d+\lambda_1}I
+\preceq B_{\lambda,y}
+\preceq \frac{r+\lambda_1}{d+\lambda_1}I.
 \qquad\text{(C3.4)}
 ```
 
-In particular, fix any constant $`c\in(0,1/2]`$ and take $`cd\le r\le d/2`$. The first lower bound in (C3.4) is at least $`c^2d^2/(8\varepsilon)`$, while its upper bound is at most $`2d^2/\varepsilon`$ before integer rounding. Therefore, uniformly over $`0\lt \varepsilon\le1/8`$,
+### 4.2 From the posterior to prediction risk
+
+If $`\lambda_1>0`$, set $`C=((d+\lambda_1)B_{\lambda,y}-rI)/\lambda_1`$. Equation (C3.4) gives $`0\preceq C\preceq I`$. The identity $`\mathrm{Tr}B_{\lambda,y}=r`$ gives $`\mathrm{Tr}C=r`$. Its eigenvalues form a convex combination of zero-one vectors with exactly $`r`$ ones, since those vectors are the extreme points of $`\{x\in[0,1]^d:\sum_i x_i=r\}`$. Hence $`C`$ is a convex combination of rank-$`r`$ projectors.
+
+Conditioning on a training record does not change the equal test priors. The best success advantage for that record is therefore
 
 ```math
-N_{\mathrm C}(d,r,\varepsilon)
-=\Theta_c\!\left(\frac{d^2}{\varepsilon}\right)
-,\qquad N_{\mathrm Q}(d,r,\varepsilon)
-=\Theta_c\!\left(\frac{d^2}{\varepsilon}\right).
+\begin{aligned}
+\frac12\max_{0\preceq M\preceq I}
+  \mathrm{Tr}\!\left[M\left(\frac{B_{\lambda,y}}{r}-\frac{I}{d}\right)\right]
+&=
+\frac{\lambda_1}{d+\lambda_1}
+\frac12\max_{0\preceq M\preceq I}
+  \mathrm{Tr}\!\left[M\left(\frac{C}{r}-\frac{I}{d}\right)\right]\\
+&\le \frac{\lambda_1}{d+\lambda_1}A_{d,r}.
+\end{aligned}
+```
+
+For the inequality, the maximum is convex in $`C`$ and equals $`A_{d,r}`$ at a rank-$`r`$ projector. This step bounds every test effect using the two posterior eigenvalue bounds, without requiring the effect itself to define a subspace estimate. For $`N=0`$, $`\lambda_1=0`$ and (C3.4) directly gives $`B_{\lambda,y}=rI/d`$, with zero advantage.
+
+Subtracting this bound from the oracle advantage and averaging the records proves the first inequality in (C3.1). For the second, the sector label has the Schur–Weyl law for $`N`$ samples and spectrum $`(1/r,\ldots,1/r)`$ on the $`r`$-dimensional support. Equivalently, it is the shape obtained by Robinson–Schensted–Knuth insertion of a word of $`N`$ independent uniform letters from an alphabet of size $`r`$. Theorem 1.4 of O'Donnell and Wright gives $`\mathbb E\lambda_1\le N/r+2\sqrt N`$ for this law. The function $`x\mapsto d/(d+x)`$ is decreasing and convex, so Jensen's inequality proves the displayed bound. [C-OWII]
+
+### 4.3 Copy budget and the pure-state endpoint
+
+For $`r\le d/2`$ we have $`A_{d,r}\ge1/4`$. Combining (C1.2) with $`\varepsilon\le1/8`$ forces $`N\ge rd/2`$, so $`d\le2N/r`$ and $`N\ge r^2`$. Consequently $`2\sqrt N\le2N/r`$, and (C3.1) gives $`E_{\mathrm C}\ge rd/(20N)`$. The upper budget in (C3.2) follows by choosing $`N`$ in (C2.3). At $`\varepsilon=1/16`$, (C1.2) also gives the explicit lower budget $`\lceil3rd/4\rceil`$. When $`r`$ is a fixed fraction of $`d`$, the classical and coherent budgets both have order $`d^2/\varepsilon`$.
+
+For $`r=1`$, the only Schur sector is $`(N)`$, and the first inequality in (C3.1) is an equality in minimax risk:
+
+```math
+E_{\mathrm C}(N;d,1)= A_{d,1}\frac{d}{d+N}
+=\frac{d-1}{2(d+N)}.
 \qquad\text{(C3.5)}
 ```
 
-The constants may depend on $`c`$. Both access models thus have the same sample-complexity order throughout the precision range when rank is a fixed fraction of dimension. For general rank, (C3.4) leaves a gap between the lower and upper precision bounds. The fixed-accuracy $`\Theta(rd)`$ result therefore does not assert a general $`\Theta(rd/\varepsilon)`$ law.
+To attain it, use the covariant pure-state estimation POVM. On the symmetric training subspace its density at the ray $`v`$ is $`\binom{N+d-1}{N}(|v\rangle\langle v|)^{\otimes N}`$ with respect to normalized Haar measure. The posterior for the unknown ray $`\psi`$ has density proportional to $`|\langle v|\psi\rangle|^{2N}`$. The unweighted overlap $`t=|\langle v|\psi\rangle|^2`$ has the beta law with parameters $`1,d-1`$, so the posterior mean of $`t`$ is $`(N+1)/(N+d)`$. Invariance under unitaries fixing $`v`$ then gives $`B=(I+N|v\rangle\langle v|)/(d+N)`$. Testing with $`|v\rangle\langle v|`$ attains the advantage in Section 4.2. The procedure is covariant, so its risk is the same for every true ray. This uses the established pure-state estimation fidelity and specializes its measurement to the classification loss. [C-BM]
 
 ## 5. Relation to existing work
 
 The tomography measurement and its quantitative bound (C2.1) are inherited from O'Donnell–Wright. Theorem C2 applies that bound to the present flat-spectrum classification loss; equation (C2.5) is the explicit link between subspace estimation error and prediction regret. [C-OW]
 
-For rank two, An studies the same training-first classicalization order in leakage detection, allowing arbitrary collective reference measurements. Its posterior converse concerns the decision effect independently of the returned-message constraint. Consequently the fixed-rank-two dimension separation is already present there. Theorem C1 gives the displayed bound uniformly in rank and connects it to the minimum-error prediction problem studied here. [C-An]
+For rank two, An studies the same training-first classicalization order in leakage detection, allowing arbitrary collective reference measurements. Its posterior converse concerns the decision effect independently of the returned-message constraint and implies the rank-two inverse-precision lower bound for the label-only problem. [The transfer](../references/RELATED_WORK.md#an2026) explains the implication. Theorem C3 establishes the uniform dependence on rank through the two-sided posterior bounds. [C-An]
 
 Li, Theil, Harrow, and Chuang likewise allow collective reference measurements followed by operations on independent quantum data controlled by the classical record. In the second version of their coherent-inference paper, the density-matrix-exponentiation converse requires approximation of a unitary channel uniformly over auxiliary inputs, measured in induced trace norm. Its proof uses a local family of pure program states. That channel task supplies relevant context for the access order but does not by itself prove the promised single-test classification converse (C1.1). [C-CQI]
 
 ## References
 
 **[C-OW]** Ryan O'Donnell and John Wright, *Efficient quantum tomography*, Proceedings of STOC 2016, pp. 899–912. [arXiv:1508.01907v2](https://arxiv.org/html/1508.01907v2). Theorem 1.2 is the expected squared-Frobenius bound used in Theorem C2; Corollary 1.4 separately states the trace-distance sample bound without a logarithmic factor.
+
+**[C-OWII]** Ryan O'Donnell and John Wright, *Efficient quantum tomography II*, Proceedings of STOC 2017, pp. 962–974. [arXiv:1612.00034](https://arxiv.org/abs/1612.00034). Theorem 1.4 bounds the expected first row of the Schur–Weyl diagram.
+
+**[C-BM]** Dagmar Bruß and Chiara Macchiavello, *Optimal state estimation for $`d`$-dimensional quantum systems*, [arXiv:quant-ph/9812016](https://arxiv.org/abs/quant-ph/9812016). The established pure-state fidelity is $`(N+1)/(N+d)`$.
 
 **[C-An]** Zheng An, *Exponential Advantage of Quantum over Classical References in Leakage Detection*, [arXiv:2609.36541v1](https://arxiv.org/html/2609.36541v1), 2026. See the End Matter, supplemental Section III, and Section IX for the collective measurement-first posterior inequality and its scope.
 

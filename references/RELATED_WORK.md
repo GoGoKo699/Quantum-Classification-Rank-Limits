@@ -1,6 +1,6 @@
 # Related work and attribution
 
-The contribution is an exact minimum-error classifier for a flat unknown subspace, a matching quantum rank-and-precision law, and a fixed-accuracy comparison with arbitrary classical compilation. Quantum-reference advantages, the compilation comparator, Schur-Weyl methods, sample-based simulation and collective tomography have established predecessors.
+The contribution is an exact minimum-error classifier for a flat unknown subspace, matching rank-and-precision laws for coherent retention and classical compilation. Quantum-reference advantages, the compilation comparator, Schur-Weyl methods, sample-based simulation and collective tomography have established predecessors.
 
 The comparisons below specify the source versions and the operational distinction. They are a bounded primary-source comparison, not an exhaustive priority certificate. Bibliographic records are in [references.bib](references.bib).
 
@@ -8,15 +8,17 @@ The single educational anchor is John Watrous, *The Theory of Quantum Informatio
 
 | Ingredient or result | Attribution and role |
 |---|---|
-| Coherent-versus-classical reference advantage at fixed rank | Already established in [An2026](#an2026); not a new claim here |
+| Rank-two classical precision lower bound | Follows from the leakage posterior inequality of [An2026](#an2026) |
 | Arbitrary collective measurement of a program before independent data processing | Present in [Li2026](#li2026) and [An2026](#an2026) |
 | Schur-Weyl reduction, branching and hook-content identities | Standard representation theory; used throughout [OW2015](#odonnell2015) and universal quantum learning |
 | Sample-based Hamiltonian simulation | [Lloyd2014](#lloyd2014), with sample bounds and extensions in [Kimmel2017](#kimmel2017) |
 | Collective tomography risk | [OW2016](#odonnell2016), Theorem 1.2 and Corollary 1.4 |
+| Expected first row under the Schur–Weyl law | [OW2017](#odonnell2017), Theorem 1.4 |
+| Pure-state estimation fidelity | [Bruß–Macchiavello](#brussmacchiavello1999), specialized to the classification test |
 | Finite-gate approximation of variable rotations | [Dawson2005](#dawson2005), used only for the constructive gate-count upper |
 | This experiment's exact likelihood and rank-independent optimum | [Theorem Q1](../science/exact_classifier.md) |
 | Unrestricted classification precision lower bound | [Theorem Q2](../science/quantum_precision.md) |
-| General-rank classical compilation converse | [Theorem C1](../science/classical_compilation.md) |
+| Classical compilation converse uniform in rank and precision | [Theorem C3](../science/classical_compilation.md#theorem-c3-uniform-classical-precision) |
 | Specialization of known constructions to the stated task | [Coherent construction](../science/constructions.md) and [Theorem C2](../science/classical_compilation.md) |
 
 ## Dawson2005
@@ -37,9 +39,9 @@ The fixed-rank separation transfers to a classical label-only task. Writing $`Q=
 \frac{I}{d}=\frac2d\frac P2+\frac{d-2}{d}\frac Q{d-2}.
 ```
 
-If a detector has normal rejection $`\alpha`$ and orthogonal-leakage detection $`D`$, its induced classification excess is $`A_{d,2}(1+\alpha-D)`$. Thus the rank-two advantage is inherited even after its quantum output is discarded.
+If a detector has normal rejection $`\alpha`$ and orthogonal-leakage detection $`D`$, its induced classification excess is $`A_{d,2}(1+\alpha-D)`$. An's posterior inequality (S29) applies to the averaged error probabilities of any collective measurement-first detector, even when the protocol outputs only a label. For $`d\ge4`$ and $`N`$ references it gives $`\bar D\le\kappa_N\bar\alpha`$ with $`1\le\kappa_N\le1+N/[2(d-2)]`$. Since $`\bar D\le1`$, the average classification excess is at least $`A_{d,2}/\kappa_N`$. This already gives the rank-two $`\Omega(d/\varepsilon)`$ classical lower bound for $`0\lt\varepsilon\le1/8`$.
 
-Supplement Theorem 1 explicitly restricts coherent optimality to zero false alarms. Section III's “general-dimensional” posterior remains rank two. The present minimum-error theorem allows both error types, varies rank, and proves the unrestricted precision converse.
+The supplement's coherent optimality theorem concerns zero false alarms. Its “general-dimensional” posterior concerns rank two. The uniform classical precision result here follows from a two-sided posterior contraction within Schur sectors for arbitrary rank. The coherent result minimizes the average of both error types in the classification experiment.
 
 ## Li2026
 
@@ -47,7 +49,7 @@ Supplement Theorem 1 explicitly restricts coherent optimality to zero false alar
 
 This work studies quantum-output inference, including purity amplification, random purification, cloning and density-matrix exponentiation. Section S5, Lemma S5.1 already allows a collective measurement of all program copies followed by a classically selected channel on independent quantum data.
 
-The v2 DME comparison uses a uniform channel approximation criterion in induced trace norm, bounded above by diamond-norm error. Its lower bound restricts the program to a local pure-state family. A single classical classification label for the flat mixed-state promise does not reconstruct such a channel, so that converse does not directly establish Theorem Q2 or C1. The comparator and the broader coherence-versus-classicalization question are nevertheless inherited.
+The v2 DME comparison uses a uniform channel approximation criterion in induced trace norm, bounded above by diamond-norm error. Its lower bound restricts the program to a local pure-state family. A single classical classification label for the flat mixed-state promise does not reconstruct such a channel, so that converse does not directly establish the classification converses Q2 or C3. The comparator and the broader coherence-versus-classicalization question are nevertheless inherited.
 
 ## Lloyd2014
 
@@ -69,7 +71,25 @@ Their general simulator lower bound concerns channel simulation and includes har
 
 Theorem 1.2 gives expected squared Frobenius error at most $`(4d-3)/N`$. Projecting its estimator onto the closest flat rank-$`r`$ state gives the [classical classification upper](../science/classical_compilation.md) $`E_{\mathrm C}\le(4d-3)r/N`$.
 
-Corollary 1.4 directly states $`O(rd/\delta^2)`$ copies for trace-distance accuracy $`\delta`$. No logarithmic dimension factor is needed for the fixed-accuracy upper used here. Section 1.3 distinguishes this result from the concurrent tomography bound of Haah and coauthors, whose stated form includes a logarithm.
+Corollary 1.4 directly states $`O(rd/\delta^2)`$ copies for trace-distance accuracy $`\delta`$. The Frobenius-risk bound yields the full inverse-precision upper without a logarithmic dimension factor. Section 1.3 distinguishes this result from the concurrent tomography bound of Haah and coauthors, whose stated form includes a logarithm.
+
+## ODonnell2017
+
+**Ryan O'Donnell and John Wright, “Efficient quantum tomography II,” STOC 2017, pp. 962–974; arXiv:1612.00034.** [Primary text](https://arxiv.org/abs/1612.00034).
+
+Theorem 1.4, applied to the uniform distribution on $`r`$ letters, gives the expected first-row bound $`\mathbb E\lambda_1\le N/r+2\sqrt N`$. Theorem C3 applies this established estimate to the conditional prediction risk after a training observation.
+
+## BrussMacchiavello1999
+
+**Dagmar Bruß and Chiara Macchiavello, “Optimal state estimation for $`d`$-dimensional quantum systems,” Physics Letters A 253, 249–251 (1999).** [Primary preprint](https://arxiv.org/abs/quant-ph/9812016).
+
+The fidelity $`(N+1)/(N+d)`$ for estimation from $`N`$ pure-state specimens supplies the attaining rank-one endpoint of [Theorem C3](../science/classical_compilation.md#theorem-c3-uniform-classical-precision).
+
+## ScharnhorstSpileckiWright2025
+
+**Thilo Scharnhorst, Jack Spilecki and John Wright, “Optimal lower bounds for quantum state tomography,” arXiv:2510.07699v1 (2025).** [Primary text](https://arxiv.org/html/2510.07699v1).
+
+Their projector tomography lower bound uses the same flat-rank source $`P/r`$ and estimates of subspace affinity based on Schur sectors. The output in projector tomography is a subspace estimate. Here the measurement record only has to specify a binary test effect, which may have arbitrary rank and spectrum. The two-sided posterior bound in Theorem C3 tackles this larger class of prediction rules directly.
 
 ## ODonnell2015
 
@@ -132,4 +152,3 @@ The source-spectrum promise matters in this comparison. General sample-based sim
 **Dave Bacon, Isaac L. Chuang and Aram W. Harrow, “Efficient Quantum Circuits for Schur and Clebsch-Gordan Transforms,” Physical Review Letters 97, 170502 (2006).** [Primary preprint](https://arxiv.org/abs/quant-ph/0407082); [DOI](https://doi.org/10.1103/PhysRevLett.97.170502).
 
 This provides a circuit-level precedent for Schur processing. The original general transform's cost is polynomial in register number and local dimension; it is not invoked here as a free gate-efficient implementation for exponentially large local dimension. The sample-attaining circuit used in this project is instead the explicit partial-swap reflection construction.
-

@@ -10,11 +10,11 @@ from __future__ import annotations
 
 from fractions import Fraction
 from functools import cache
-from itertools import permutations, product
+from itertools import combinations, permutations, product
 
 import numpy as np
 
-from exact_schur import exact_statistics, fraction_text, require
+from exact_schur import exact_statistics, fraction_text, require, schur_weight
 
 TOLERANCE = 2e-10
 RECORDED_RESIDUALS: list[float] = []
@@ -293,6 +293,99 @@ def compiler_case(n: int, rank: int, dimension: int):
     return result
 
 
+def posterior_case(n: int, rank: int, dimension: int):
+    """Exercise the posterior bound with explicit small Schur sectors."""
+    training, _, _ = twirl(n, rank, dimension)
+    joint, _, _ = twirl(n + 1, rank, dimension)
+    size = dimension ** n
+    joint = joint.reshape(size, dimension, size, dimension)
+    identity = np.eye(dimension)
+    available_advantage = Fraction(dimension - rank, 2 * dimension)
+
+    # The sum of training transpositions distinguishes the partitions through
+    # size three. Its eigenvalue is the sum of the partition's box contents.
+    central = np.zeros_like(training)
+    for i, j in combinations(range(n), 2):
+        swap = list(range(n))
+        swap[i], swap[j] = swap[j], swap[i]
+        central += permutation_matrix(tuple(swap), dimension)
+    contents, eigenvectors = np.linalg.eigh(central)
+    shapes_by_content = (
+        {0: ()}, {0: (1,)}, {1: (2,), -1: (1, 1)},
+        {3: (3,), 0: (2, 1), -3: (1, 1, 1)},
+    )
+    j_test = jucys_murphy(n, dimension)
+    achieved_advantage = 0.0
+    risk_bound = Fraction(0)
+    sectors = []
+    total_mass = 0.0
+    for content, shape in shapes_by_content[n].items():
+        if len(shape) > rank:
+            continue
+        basis = eigenvectors[:, np.abs(contents - content) < TOLERANCE]
+        require(basis.shape[1] > 0, "missing supported training sector")
+        weight = schur_weight(shape, rank)
+        check_close(np.trace(basis.T @ training @ basis), float(weight),
+                    "posterior sector mass")
+
+        first_row = shape[0] if shape else 0
+        embedding = np.kron(basis, identity)
+        spectrum = np.linalg.eigvalsh(embedding.T @ j_test @ embedding)
+        check_close(spectrum[0], -len(shape), "least supported swap content")
+        check_close(spectrum[-1], first_row, "greatest supported swap content")
+
+        # A Fourier basis makes a complete complex rank-one POVM in the
+        # sector and exercises off-diagonal training effects.
+        width = basis.shape[1]
+        indices = np.arange(width)
+        fourier = np.exp(2j * np.pi * np.outer(indices, indices) / width)
+        vectors = basis @ (fourier / np.sqrt(width))
+        # Check the Fourier measurement resolves the same sector projector.
+        check_close(vectors @ vectors.conj().T, basis @ basis.T,
+                    "sector POVM normalization")
+        for vector in vectors.T:
+            mass = float(np.vdot(vector, training @ vector).real)
+            require(mass > 0, "nonpositive training outcome mass")
+            posterior = rank * np.einsum(
+                "i,iajb,j->ab", vector.conj(), joint, vector, optimize=True
+            ) / mass
+            check_close(posterior, posterior.conj().T, "posterior Hermiticity")
+            check_close(np.trace(posterior), rank, "posterior trace")
+            values = np.linalg.eigvalsh(posterior)
+            require(values[0] >= rank / (dimension + first_row) - TOLERANCE,
+                    "posterior violates its spectral floor")
+            require(values[-1] <= (rank + first_row) / (dimension + first_row)
+                    + TOLERANCE, "posterior violates its spectral ceiling")
+            advantage = np.maximum(values / rank - 1 / dimension, 0).sum() / 2
+            require(advantage <= float(available_advantage * first_row
+                                       / (dimension + first_row)) + TOLERANCE,
+                    "posterior Helstrom advantage exceeds contraction bound")
+            total_mass += mass
+            achieved_advantage += mass * advantage
+        risk_bound += available_advantage * weight * dimension / (dimension + first_row)
+        sectors.append({"shape": list(shape), "effects": width})
+    check_close(total_mass, 1, "posterior POVM total mass")
+    require(float(available_advantage) - achieved_advantage
+            >= float(risk_bound) - TOLERANCE, "averaged posterior risk bound")
+
+    result = {"N": n, "r": rank, "d": dimension, "sectors": sectors,
+              "risk_lower_bound": fraction_text(risk_bound)}
+    if rank == 1:
+        # The orbit of |0>^{⊗N} is the covariant pure-state training POVM.
+        # Check its seed posterior directly, including the no-training case.
+        seed_posterior = joint[0, :, 0, :] / training[0, 0]
+        exact_posterior = identity.copy()
+        exact_posterior[0, 0] += n
+        exact_posterior /= dimension + n
+        check_close(seed_posterior, exact_posterior, "pure-state seed posterior")
+        seed_advantage = (seed_posterior[0, 0] - 1 / dimension) / 2
+        exact_risk = available_advantage * dimension / (dimension + n)
+        check_close(float(available_advantage) - seed_advantage, float(exact_risk),
+                    "exact classical pure-state risk")
+        result["pure_state_risk"] = fraction_text(exact_risk)
+    return result
+
+
 def rank_mixture_case():
     n, dimension = 3, 3
     weights = ((1, Fraction(1, 5)), (2, Fraction(2, 5)), (3, Fraction(2, 5)))
@@ -329,9 +422,12 @@ def run():
     compilers = [compiler_case(*case) for case in
                  ((1, 1, 2), (1, 2, 3), (1, 2, 4),
                   (2, 1, 2), (2, 2, 3), (2, 2, 4))]
+    posteriors = [posterior_case(*case) for case in
+                  ((0, 1, 2), (1, 1, 3), (2, 1, 2), (3, 1, 2),
+                   (1, 2, 4), (2, 2, 4), (3, 2, 4))]
     rank_mixture = rank_mixture_case()
     return ({"twirl_cases": fixtures, "compiler_cases": compilers,
-             "rank_mixture": rank_mixture},
+             "posterior_cases": posteriors, "rank_mixture": rank_mixture},
             {"largest_matrix_residual": max(RECORDED_RESIDUALS, default=residual),
              "smallest_operator_slack_eigenvalue": smallest_slack,
              "absolute_tolerance": TOLERANCE})

@@ -389,7 +389,23 @@ R_P(\widehat P)-R_*
 =\frac{\lVert P-\widehat P\rVert_F^2}{4r}.
 ```
 
-Thus $`E_{\mathrm C}\le(4d-3)r/N`$. The use of squared Frobenius loss is what makes this an $`O(rd/\varepsilon)`$ construction for excess classification error $`\varepsilon`$. The lower and upper bounds give $`\Theta(rd)`$ copies at fixed nontrivial accuracy. The general-rank classical precision converse remains unmatched; the [combined bounds and proportional-rank corollary](../science/classical_compilation.md#corollary-c3-combined-lower-bound-and-proportional-rank) state exactly what follows.
+Thus $`E_{\mathrm C}\le(4d-3)r/N`$. Squared Frobenius loss gives the $`O(rd/\varepsilon)`$ copy upper bound for excess classification error $`\varepsilon`$.
+
+### From the posterior test to the classical precision law
+
+The [precision converse C3](../science/classical_compilation.md#theorem-c3-uniform-classical-precision) uses the same Helstrom and Schur tools. A training measurement can first record the Schur diagram $`\lambda`$ because the training state is block-diagonal. Let $`L=\lambda_1`$ be its first row and $`B=\mathbb E[P\mid\lambda,y]`$ the posterior mean projector given the refined record. Within this block, $`J_N`$ has spectrum in $`[-r,L]`$. The likelihood factor $`(r+J_N)/(d+J_N)`$ lies between $`(r+J_N)/(d+L)`$ and $`(r+L)/(d+L)`$. After contraction with the training effect, each swap contributes a nonnegative one-site expectation. This gives
+
+```math
+\frac{r I}{d+L}\preceq B\preceq\frac{(r+L)I}{d+L}.
+```
+
+Since $`\mathrm{Tr}B=r`$, for $`L>0`$ the operator $`C=((d+L)B-rI)/L`$ is a positive contraction of trace $`r`$. It is a convex mixture of rank-$`r`$ projectors, so its normalized state $`C/r`$ offers at most the oracle advantage $`A_{d,r}`$ against $`I/d`$. The actual posterior test differs from the background by
+
+```math
+\frac{B}{r}-\frac{I}{d}=\frac{L}{d+L}\left(\frac{C}{r}-\frac{I}{d}\right).
+```
+
+Its excess error is at least $`A_{d,r}d/(d+L)`$. With no training, the excess error is $`A_{d,r}`$. Averaging and using O'Donnell and Wright's Schur first-row bound $`\mathbb E L\le N/r+2\sqrt N`$ gives $`E_{\mathrm C}\ge A_{d,r}d/(d+N/r+2\sqrt N)`$. Applying C1 for budgets comparable to $`rd`$ and combining this inequality with C2 proves the matching classical precision law. The restriction on the posterior state applies directly to any binary effect on the later test.
 
 ## 6. A reflection built from the supplied copies
 
@@ -501,7 +517,7 @@ For a batch, fixed extra inputs and discarded extra outputs preserve the single-
 | [M17–M19](milestones.md#m17) | Content moments give both the rank-squared threshold and the precision majorant | [Quantum precision, §§1–4](../science/quantum_precision.md#1-the-transition-content-distribution) |
 | [M20–M22](milestones.md#m20) | A classical record yields the C1 positivity argument; squared estimation error yields C2 | [Classical compilation](../science/classical_compilation.md) |
 | [M23–M25](milestones.md#m23) | Augmented program copies and channel-error composition attain the lower-bound order | [Construction](../science/constructions.md), [Theorem Q2](../science/quantum_precision.md#theorem-q2-finite-sample-risk-and-copy-complexity) |
-| [M26–M28](milestones.md#m26) | Copy complexity, retained storage, and rank determine the operational comparison | [Classical comparison](../science/classical_compilation.md#4-a-precise-fixed-accuracy-comparison), [interpretation](../science/interpretation.md) |
+| [M26–M28](milestones.md#m26) | The sector posterior gives the classical precision law, and the two laws quantify the copy advantage across rank | [Theorem C3](../science/classical_compilation.md#theorem-c3-uniform-classical-precision), [interpretation](../science/interpretation.md) |
 | [M29–M30](milestones.md#m29) | The full argument combines inherited tools with the exact decision and converse calculations; an anchored reduction transfers Q2 to a stronger channel objective | [Programming application](../science/programming_application.md), [attribution](../references/RELATED_WORK.md), [verification scope](../verification/README.md) |
 
-At fixed excess risk $`1/16`$ and $`r\le d/2`$, the resulting copy orders are $`\Theta(r^2)`$ for coherent prediction and $`\Theta(rd)`$ for classical compilation. The coherent precision order is $`\Theta(r^2/\varepsilon)`$ throughout $`0\lt \varepsilon\le1/8`$. When $`cd\le r\le d/2`$ for a fixed positive $`c`$, inclusion of the classical class in the quantum class also gives $`\Theta_c(d^2/\varepsilon)`$ for classical compilation. The remaining general-rank classical precision gap is part of the stated theorem boundary.
+For $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, the matched copy costs are $`\Theta(r^2/\varepsilon)`$ for coherent prediction and $`\Theta(rd/\varepsilon)`$ for classical compilation. Comparing the two costs at the same target error gives a copy ratio of $`\Theta(d/r)`$.

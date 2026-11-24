@@ -322,7 +322,7 @@ N_Q(d,d/2,\epsilon)=\Theta(d^2/\epsilon)
 
 The two test classes therefore retain a constant available advantage, yet coherent retention does not remove the dimension dependence of learning from their mixed-state training source.
 
-This is a copy-complexity statement for one future test. It does not determine the minimum quantum memory required to attain the bound, or the lifetime of a reusable quantum model. The [resource analysis](constructions.md) charges the stored training systems used by the stated construction. The fixed-accuracy classical-compiler comparison and the precise relationship to earlier quantum-reference advantages are described in [Related work](../references/RELATED_WORK.md) and the corresponding topic proofs.
+This copy-complexity statement concerns one future test. The [resource analysis](constructions.md) charges the stored training systems used by the stated construction. The [uniform classical precision theorem](classical_compilation.md#theorem-c3-uniform-classical-precision) supplies the matching comparison at the same excess-error target. The [prior-work comparison](../references/RELATED_WORK.md) explains how these results relate to earlier quantum-reference advantages.
 
 ## Application to ordinary reflection programming
 
