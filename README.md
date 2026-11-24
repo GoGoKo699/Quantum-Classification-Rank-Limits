@@ -4,7 +4,7 @@
 
 A source supplies independent examples from an unknown state $`P/r`$, uniform on a rank-$`r`$ subspace of a $`d`$-dimensional system. One later test is drawn, with equal prior probabilities, from that same state or from the known background $`I/d`$. The learner must output one label.
 
-This repository gives the exact optimal coherent classifier, a matching rank-and-precision law for its training cost, and a fixed-accuracy comparison with every strategy that converts the training data to a classical record before seeing the test. The coherent cost is governed by $`r^2`$; the classical cost at fixed accuracy is governed by $`rd`$. Their ratio decreases as the mixture rank grows.
+This repository gives the exact optimal coherent classifier and matching training-copy laws for coherent retention and classical compilation. At excess error $`\varepsilon`$, the coherent cost scales as $`r^2/\varepsilon`$ and the cost of measuring all training data before the test scales as $`rd/\varepsilon`$ throughout the precision range below.
 
 ## Principal results
 
@@ -15,8 +15,7 @@ Let $`N_{\mathrm Q}(d,r,\varepsilon)`$ and $`N_{\mathrm C}(d,r,\varepsilon)`$ be
 | Exact coherent decision | Predict the class state on the positive eigenspace of $`J=\sum_{i=1}^N\mathrm{SWAP}(i,S)`$. The same rule is optimal for every $`1\le r\lt d`$. | [Q1](science/exact_classifier.md) |
 | Exact learning curve | $`p_{\mathrm Q}=1/2+A_{d,r}F_{N,r}`$, where $`A_{d,r}=(1-r/d)/2`$ and $`F_{N,r}`$ is independent of $`d`$. | [Q1](science/exact_classifier.md) |
 | Quantum rank and precision | $`N_{\mathrm Q}=\Theta(r^2/\varepsilon)`$ uniformly for $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$. | [Q2](science/quantum_precision.md) and [construction](science/constructions.md) |
-| Classical compilation | $`N_{\mathrm C}(d,r,1/16)=\Theta(rd)`$ for $`1\le r\le d/2`$, even with arbitrary collective training measurements and unlimited classical storage. | [C1–C2](science/classical_compilation.md) |
-| Rank proportional to dimension | For fixed $`c>0`$ and $`cd\le r\le d/2`$, both learner classes require $`\Theta_c(d^2/\varepsilon)`$ copies in the stated precision range. | [C3](science/classical_compilation.md#corollary-c3-combined-lower-bound-and-proportional-rank) |
+| Classical rank and precision | $`N_{\mathrm C}=\Theta(rd/\varepsilon)`$ in the same range, even with arbitrary collective training measurements and unlimited classical storage. | [C3](science/classical_compilation.md#theorem-c3-uniform-classical-precision) |
 
 The uniform quantum bounds include explicit constants:
 
@@ -27,17 +26,15 @@ The uniform quantum bounds include explicit constants:
 \left\lceil\frac{2\pi^2r^2}{\varepsilon}\right\rceil.
 ```
 
-For classical compilation, the general precision upper is
+The classical precision bounds are
 
 ```math
-N_{\mathrm C}(d,r,\varepsilon)
-\le
-\left\lceil\frac{(4d-3)r}{\varepsilon}\right\rceil.
+\left\lceil\frac{rd}{20\varepsilon}\right\rceil
+\le N_{\mathrm C}(d,r,\varepsilon)
+\le \left\lceil\frac{(4d-3)r}{\varepsilon}\right\rceil.
 ```
 
-The matching classical converse is established at fixed accuracy and for rank proportional to dimension. A matching $`\Theta(rd/\varepsilon)`$ law for all rank regimes is not claimed.
-
-At fixed accuracy, fixed rank and $`d=2^n`$, coherent retention saves an exponential number of training copies in the number of qubits. At $`r=d/2`$, the oracle still succeeds with probability $`3/4`$, but both learner classes need order $`d^2/\varepsilon`$ copies. The loss of the copy advantage therefore occurs while the classification task retains constant observable contrast.
+The copy ratio $`N_{\mathrm C}/N_{\mathrm Q}`$ is $`\Theta(d/r)`$ throughout this range. For fixed rank and $`d=2^n`$, coherent retention saves an exponential number of copies in the number of qubits. At $`r=d/2`$, the oracle still succeeds with probability $`3/4`$, while both learner classes need order $`d^2/\varepsilon`$ copies.
 
 ## Converse application: ordinary reflection programming
 
@@ -62,11 +59,11 @@ The exact optimal decision does not need the rank. The promised rank can still d
 | Why must every coherent learner use order $`r^2/\varepsilon`$ copies? | [Growth-content moments and the precision converse](science/quantum_precision.md) |
 | How is the sample order attained, and what does it cost to implement? | [Controlled support reflection and resources](science/constructions.md) |
 | What does Q2 imply for ordinary reflection programming? | [Anchored converse application and exact promise mapping](science/programming_application.md) |
-| Why does an arbitrary classical compiler require order $`rd`$ copies at fixed accuracy? | [Compiler converse and tomography construction](science/classical_compilation.md) |
+| Why does an arbitrary classical compiler require order $`rd/\varepsilon`$ copies? | [Posterior bound and matching tomography construction](science/classical_compilation.md) |
 | What changes between low and high rank? | [Physical interpretation and claim boundaries](science/interpretation.md) |
 | Which ingredients and earlier advantages are inherited? | [Related work](references/RELATED_WORK.md) and [bibliography](references/references.bib) |
 
-For a continuous first reading, follow the table from the model through the interpretation. The exact-classifier page derives the averaged hypotheses and branch likelihood. The precision page proves the content moments and quadratic majorant. The classical page uses the same likelihood in an operator inequality that applies to all permitted compilers.
+For a continuous first reading, follow the table from the model through the interpretation. The exact-classifier page derives the averaged hypotheses and branch likelihood. The precision page proves the content moments and quadratic majorant. The classical page uses the same likelihood to bound the information available after any collective training measurement and derives the precision law from the first row of the recorded Schur diagram.
 
 [llms.txt](llms.txt) provides a compact map from questions to authoritative files.
 
@@ -95,7 +92,7 @@ Finite checks support the analytical derivations. They do not prove the universa
 
 ## Relation to earlier work and scope
 
-Fixed-rank quantum-reference advantages and the collective classical-compilation comparator have precedents, particularly [An's rank-two leakage problem](references/RELATED_WORK.md#an2026) and [coherent quantum inference](references/RELATED_WORK.md#li2026). The result here is the unrestricted minimum-error decision for general flat rank, its exact learning curve, the matching quantum precision converse, and the rank-dependent compilation comparison.
+[An's rank-two leakage analysis](references/RELATED_WORK.md#an2026) already implies the rank-two classical precision scaling. [Coherent quantum inference](references/RELATED_WORK.md#li2026) gives a related measurement-first comparator for quantum outputs. The contribution here is the unrestricted minimum-error decision for a flat source, its exact coherent learning curve, and the matched copy laws uniform in the stated rank and precision range.
 
 The attaining quantum mechanism is established sample-based Hamiltonian simulation, specialized to a support reflection. The classical upper uses established collective tomography. Both are attributed alongside the new derivations in the scientific account.
 

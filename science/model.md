@@ -2,7 +2,7 @@
 
 A source supplies examples from an unknown quantum state. The prediction task is to decide whether one later system came from that source or from a known maximally mixed background. Keeping the examples coherent allows a joint prediction. Measuring the examples first produces a classical model that must act on the later test through its recorded information.
 
-This project solves the coherent decision problem for states that are uniform on an unknown subspace. The mixture rank determines the coherent training cost; the ambient dimension enters the cost of classical compilation.
+This project solves the coherent decision problem for states that are uniform on an unknown subspace, and gives matching training-copy bounds for both access models. The mixture rank determines the coherent training cost, while the ambient dimension enters the cost of classical compilation.
 
 ## Experiment and information access
 
@@ -104,14 +104,15 @@ The statements below use $`1\le r\le d/2`$, so the oracle advantage is at least 
 | Q2: quantum precision | For $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, $`r^2/(8\varepsilon)\le N_{\mathrm Q}(d,r,\varepsilon)\le\lceil2\pi^2r^2/\varepsilon\rceil`$. | [Quantum precision](quantum_precision.md) and [construction](constructions.md) |
 | C1: all classical compilers | $`p_{\mathrm C}-1/2\le A_{d,r}N/(rd)`$. | [Classical compilation](classical_compilation.md) |
 | C2: classical construction | $`E_{\mathrm C}\le(4d-3)r/N`$ for $`N\ge1`$. | [Classical compilation](classical_compilation.md) |
+| C3: classical precision | For $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, $`rd/(20\varepsilon)\le N_{\mathrm C}(d,r,\varepsilon)\le\lceil(4d-3)r/\varepsilon\rceil`$. | [Uniform classical precision](classical_compilation.md#theorem-c3-uniform-classical-precision) |
 
-At fixed nontrivial accuracy, the training orders are $`\Theta(r^2)`$ and $`\Theta(rd)`$. The quantum dependence on $`\varepsilon`$ is matched. The classical bounds establish an $`O(rd/\varepsilon)`$ upper and a fixed-accuracy converse; they do not establish a matching classical converse for every $`\varepsilon`$.
+Together Q2 and C3 give $`\Theta(d/r)`$ for the copy ratio across this precision range. C3 bounds the posterior mean of the unknown projector in each Schur sector. This controls every record-dependent test effect, including effects that accept a subspace of rank different from the source rank.
 
 The exact quantum decision rule does not require $`r`$. The sample budget and the explicit reflection construction may use the promised rank. Rank-independent decision-making does not imply an adaptive stopping or memory-compression theorem.
 
 ## Boundaries and resources
 
-At $`N=0`$, the minimax success is $`1/2`$. At $`r=d`$, the two classes coincide and the task is trivial. Exact formulas for $`r\lt d`$ remain valid beyond $`r\le d/2`$, but the constant-accuracy complexity statements require an oracle advantage bounded away from zero.
+At $`N=0`$, the minimax success is $`1/2`$. At $`r=d`$, the two classes coincide and the task is trivial. The exact coherent decision and finite-sample posterior bound apply for every $`1\le r\lt d`$. The uniform copy laws above use $`r\le d/2`$, which keeps the oracle advantage at least $`1/4`$.
 
 The direct coherent construction stores $`N\log_2d`$ training qubits when $`d`$ is a power of two. Its small active interaction width does not reduce that offline storage. Source preparation adds its actual per-copy cost. The [construction and resource account](constructions.md) specify these charges.
 

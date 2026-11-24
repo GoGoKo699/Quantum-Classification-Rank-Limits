@@ -29,58 +29,24 @@ The matching construction simulates the support reflection at time $`\pi r`$. It
 
 ## The cost of classicalizing the training data
 
-A classical compiler can use entanglement during training. It can retain an unlimited record and apply any later test measurement. Nevertheless, the [compiler converse](classical_compilation.md) bounds its recovered advantage by $`N/(rd)`$ times the oracle advantage.
+A classical compiler can use entanglement during training, retain an unlimited record and apply any later test measurement. The [precision converse](classical_compilation.md#theorem-c3-uniform-classical-precision) conditions the record on the Schur diagram $`\lambda`$. In that sector it bounds the best test advantage by $`\lambda_1/(d+\lambda_1)`$ times the known-subspace advantage. The mean first row is at most $`N/r+2\sqrt N`$, so achieving small excess error takes order $`rd/\varepsilon`$ copies. The collective tomography construction attains that order.
 
-The proof does not require the compiler to estimate the entire state. It treats every permitted classical record and conditional test measurement at once. Tomography supplies an attaining order at fixed accuracy, but the lower bound is about prediction itself.
-
-For a fixed accuracy target bounded away from random guessing and the oracle risk, the comparison is
+Throughout $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, the copy laws compare as follows.
 
 | Rank regime, with $`d=2^n`$ | Coherent training | Classical compilation | Copy ratio |
 |---|---:|---:|---:|
-| Fixed $`r`$ | $`\Theta(1)`$ | $`\Theta(d)`$ | $`\Theta(d)`$ |
-| $`r=\mathrm{poly}(n)`$ | $`\Theta(r^2)`$ | $`\Theta(rd)`$ | $`\Theta(d/r)`$ |
-| $`r=d^\alpha`$, fixed $`0\lt \alpha\lt 1`$ | $`\Theta(d^{2\alpha})`$ | $`\Theta(d^{1+\alpha})`$ | $`\Theta(d^{1-\alpha})`$ |
-| $`r`$ proportional to $`d`$, with $`r\le d/2`$ | $`\Theta(d^2)`$ | $`\Theta(d^2)`$ | $`\Theta(1)`$ |
+| Fixed $`r`$ | $`\Theta(1/\varepsilon)`$ | $`\Theta(d/\varepsilon)`$ | $`\Theta(d)`$ |
+| $`r=\mathrm{poly}(n)`$ | $`\Theta(r^2/\varepsilon)`$ | $`\Theta(rd/\varepsilon)`$ | $`\Theta(d/r)`$ |
+| $`r=d^\alpha`$, fixed $`0\lt \alpha\lt 1`$ | $`\Theta(d^{2\alpha}/\varepsilon)`$ | $`\Theta(d^{1+\alpha}/\varepsilon)`$ | $`\Theta(d^{1-\alpha})`$ |
+| $`r`$ proportional to $`d`$, with $`r\le d/2`$ | $`\Theta(d^2/\varepsilon)`$ | $`\Theta(d^2/\varepsilon)`$ | $`\Theta(1)`$ |
 
-Integer rounding of ranks does not change these asymptotic orders. The fixed-rank exponential advantage is already present in quantum-reference work, especially [An's rank-two leakage result](../references/RELATED_WORK.md#an2026). The general-rank optimum quantifies how that advantage decreases with the mixture rank.
+[An's rank-two leakage result](../references/RELATED_WORK.md#an2026) already implies the classical precision order at rank two. The uniform law answers how the copy advantage decreases as the mixture rank grows.
 
 ## High rank retains useful contrast but loses the copy advantage
 
 Take even $`d`$ and $`r=d/2`$. A known-projector test succeeds with probability $`3/4`$, so the classes remain distinguishable with constant advantage. The difficult part is learning how to use that contrast from examples.
 
-For every $`0\lt \varepsilon\le1/8`$,
-
-```math
-N_{\mathrm Q}(d,d/2,\varepsilon)
-=\Theta(d^2/\varepsilon).
-```
-
-Every classical compiler is a coherent procedure with an additional restriction. It obeys the same lower bound. The collective tomography construction gives a classical upper of the same order in this regime. More generally, if $`c d\le r\le d/2`$ for a fixed $`c>0`$,
-
-```math
-N_{\mathrm C}(d,r,\varepsilon)
-=
-N_{\mathrm Q}(d,r,\varepsilon)
-=
-\Theta_c(d^2/\varepsilon),
-```
-
-where equality denotes equality of asymptotic orders, not equality of exact optimal budgets.
-
-For arbitrary rank, the established classical bounds instead give
-
-```math
-\max\left\{
-\frac{r^2}{8\varepsilon},
-\;rd\left(1-\frac{\varepsilon}{A_{d,r}}\right)
-\right\}
-\le
-N_{\mathrm C}(d,r,\varepsilon)
-\le
-\left\lceil\frac{(4d-3)r}{\varepsilon}\right\rceil
-```
-
-throughout $`1\le r\le d/2`$, $`0\lt \varepsilon\le1/8`$, with integer ceilings understood on necessary lower bounds. These inequalities establish the full quantum precision law and the fixed-accuracy classical comparison. They do not determine the complete classical precision law when $`r/d`$ vanishes.
+For every $`0\lt \varepsilon\le1/8`$, each learner class requires order $`d^2/\varepsilon`$ copies at this endpoint. More generally, if $`cd\le r\le d/2`$ for fixed $`c>0`$, both $`N_{\mathrm C}`$ and $`N_{\mathrm Q}`$ are of order $`\Theta_c(d^2/\varepsilon)`$. The two optimal budgets may differ by a constant factor even though the advantage stops growing with dimension.
 
 ## Rank-independent decisions and resource limits
 

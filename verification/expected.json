@@ -443,6 +443,122 @@
         "r": 2
       }
     ],
+    "posterior_cases": [
+      {
+        "N": 0,
+        "d": 2,
+        "pure_state_risk": "1/4",
+        "r": 1,
+        "risk_lower_bound": "1/4",
+        "sectors": [
+          {
+            "effects": 1,
+            "shape": []
+          }
+        ]
+      },
+      {
+        "N": 1,
+        "d": 3,
+        "pure_state_risk": "1/4",
+        "r": 1,
+        "risk_lower_bound": "1/4",
+        "sectors": [
+          {
+            "effects": 3,
+            "shape": [
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "N": 2,
+        "d": 2,
+        "pure_state_risk": "1/8",
+        "r": 1,
+        "risk_lower_bound": "1/8",
+        "sectors": [
+          {
+            "effects": 3,
+            "shape": [
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "N": 3,
+        "d": 2,
+        "pure_state_risk": "1/10",
+        "r": 1,
+        "risk_lower_bound": "1/10",
+        "sectors": [
+          {
+            "effects": 4,
+            "shape": [
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "N": 1,
+        "d": 4,
+        "r": 2,
+        "risk_lower_bound": "1/5",
+        "sectors": [
+          {
+            "effects": 4,
+            "shape": [
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "N": 2,
+        "d": 4,
+        "r": 2,
+        "risk_lower_bound": "7/40",
+        "sectors": [
+          {
+            "effects": 10,
+            "shape": [
+              2
+            ]
+          },
+          {
+            "effects": 6,
+            "shape": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "N": 3,
+        "d": 4,
+        "r": 2,
+        "risk_lower_bound": "13/84",
+        "sectors": [
+          {
+            "effects": 20,
+            "shape": [
+              3
+            ]
+          },
+          {
+            "effects": 40,
+            "shape": [
+              2,
+              1
+            ]
+          }
+        ]
+      }
+    ],
     "rank_mixture": {
       "N": 3,
       "d": 3,

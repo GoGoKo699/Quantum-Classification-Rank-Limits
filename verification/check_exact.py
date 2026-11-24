@@ -137,6 +137,13 @@ def check_likelihood(n: int, rank: int, dimension: int) -> None:
                     "rank-blind positive decision")
             require((b.likelihood == 1) == (b.content == 0),
                     "zero-content tie")
+            first_row = b.shape[0] if b.shape else 0
+            require(-rank <= b.content <= first_row, "posterior content bounds")
+            ratio = b.a_joint / b.a_training
+            require(Fraction(rank + b.content, rank * (dimension + first_row))
+                    <= ratio <= Fraction(rank + first_row,
+                                         rank * (dimension + first_row)),
+                    "Schur-sector posterior operator bounds")
         # Verify the exact operator slack on every supported Schur branch.
         rhs = (Fraction(dimension - rank, rank * dimension ** 2)
                * b.a_training * b.content)
