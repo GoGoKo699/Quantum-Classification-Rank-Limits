@@ -15,6 +15,7 @@ The source state is P/r for an unknown rank-r projector on C^d. All N independen
 - [Construction](science/constructions.md): controlled support reflection from copies; explicit simulation error; sample, storage, active-width, gate-synthesis and preparation costs.
 - [Programming application](science/programming_application.md): Q2 transferred to ordinary reflection programming through exact anchored routing, contrast-normalized risk and hard-budget dimension/rank conversions; single-target optimality and the remaining intermediate-batch gap.
 - [Classical compilation](science/classical_compilation.md): Theorems C1–C3; arbitrary collective training POVMs, the fixed-accuracy operator bound, the tomography upper, the two-sided Schur-sector posterior bound and the matching classical precision law.
+- [Contaminated training](science/contaminated_training.md): the clean subfamily retains Q2 and C3, the balanced-rank recognition floor, and the anchored all-rank classical-record reflection-programming converse. Links to the two partner repositories identify the owning proofs.
 - [Interpretation](science/interpretation.md): rank regimes, high-rank observable contrast and limits of dimension-independent learning claims.
 - [Related work](references/RELATED_WORK.md): primary-source comparisons, exact versions and attribution of inherited ingredients.
 - [Bibliography](references/references.bib): structured source metadata.

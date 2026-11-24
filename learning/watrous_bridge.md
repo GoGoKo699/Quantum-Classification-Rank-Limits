@@ -507,7 +507,17 @@ These reductions close the ordinary programmer's single-target order $`\Theta(r^
 
 For a batch, fixed extra inputs and discarded extra outputs preserve the single-target guarantee with the same $`N,\epsilon`$. Together with the programming pair converse this gives lower order $`(r^2+rk^2)/\epsilon`$, against upper order $`(r^2k+rk^2)/\epsilon`$. A factor $`k`$ multiplying Q2's rank-squared lower bound is not supplied by this one-test theorem. The classification account owns Q2; the programming account owns the full operational transfer and its channel-law consequence.
 
-## 8. Proof connections across the milestone map
+## 8. Clean subfamilies inside contaminated training
+
+**Watrous:** §1.1.3, pp. 24–34; §3.1.1, pp. 125–131; §§3.3.1–3.3.3, pp. 164–184. **Milestones:** [M28](milestones.md#m28), [M29–M30](milestones.md#m29).
+
+In the [contaminated experiment](../science/contaminated_training.md), the sample state is $`\rho=aP/r+(1-a)\sigma`$ while the positive test still comes from $`P/r`$. Put $`u=r(1-a)/a`$. Watrous's binary discrimination rule applies to the two **test** densities after selecting an admissible prior over clean targets. If two targets give the same $`\rho`$, their training registers provide no information about which of those tests is coming. At balance $`d=2r`$, diagonalizing the averaged positive density against $`I_d/d`$ gives a contamination contribution of order $`\min\{u^2,u,r\}/r`$. The [owning proof](https://github.com/GoGoKo699/Quantum-Training-Contamination/blob/main/science/flat_rank_training.md) derives the principal-angle compatibility criterion and the exact balanced result for $`u\lt1`$.
+
+Now choose a different admissible subfamily, $`\sigma=P/r`$. The data reduce to the original clean classification experiment, so Q2 or C3 applies according to the storage class. This yields a separate statistical contribution. Combining the two lower bounds requires taking their maximum, which agrees in order with the sum attained by the finite-copy constructions. Balanced rank has the same order for both storage classes. At lower rank the copy ratio remains of order $`d/r`$ when $`\min(u^2,u)/r`$ is at most a sufficiently small constant times the target excess.
+
+Channel discrimination uses a different loss because the processor must preserve its action on arbitrary inputs and references. On the clean subfamily, apply Section 7's anchored routing to a classical-record programmer and then use the full contrast-normalized C3.1 lower bound in place of Q2. This yields $`\Omega(rD/\epsilon)`$ in programming dimension $`D`$. The [programming proof](https://github.com/GoGoKo699/Collective-Quantum-Programming/blob/main/science/contaminated_reflections.md) obtains its separate contamination floor by distinguishing the two target channels on coherent batch inputs.
+
+## 9. Proof connections across the milestone map
 
 | Milestones | Connection established by this bridge | Canonical destination |
 |---|---|---|
@@ -518,6 +528,6 @@ For a batch, fixed extra inputs and discarded extra outputs preserve the single-
 | [M20–M22](milestones.md#m20) | A classical record yields the C1 positivity argument; squared estimation error yields C2 | [Classical compilation](../science/classical_compilation.md) |
 | [M23–M25](milestones.md#m23) | Augmented program copies and channel-error composition attain the lower-bound order | [Construction](../science/constructions.md), [Theorem Q2](../science/quantum_precision.md#theorem-q2-finite-sample-risk-and-copy-complexity) |
 | [M26–M28](milestones.md#m26) | The sector posterior gives the classical precision law, and the two laws quantify the copy advantage across rank | [Theorem C3](../science/classical_compilation.md#theorem-c3-uniform-classical-precision), [interpretation](../science/interpretation.md) |
-| [M29–M30](milestones.md#m29) | The full argument combines inherited tools with the exact decision and converse calculations; an anchored reduction transfers Q2 to a stronger channel objective | [Programming application](../science/programming_application.md), [attribution](../references/RELATED_WORK.md), [verification scope](../verification/README.md) |
+| [M29–M30](milestones.md#m29) | Anchored routing transfers the statistical converses to a stronger channel objective. Clean and indistinguishable contaminated subfamilies isolate separate sources of error. | [Programming application](../science/programming_application.md), [contaminated training](../science/contaminated_training.md), [attribution](../references/RELATED_WORK.md), [verification scope](../verification/README.md) |
 
 For $`1\le r\le d/2`$ and $`0\lt \varepsilon\le1/8`$, the matched copy costs are $`\Theta(r^2/\varepsilon)`$ for coherent prediction and $`\Theta(rd/\varepsilon)`$ for classical compilation. Comparing the two costs at the same target error gives a copy ratio of $`\Theta(d/r)`$.

@@ -42,6 +42,12 @@ The copy ratio $`N_{\mathrm C}/N_{\mathrm Q}`$ is $`\Theta(d/r)`$ throughout thi
 
 The [application and exact promise mapping](science/programming_application.md) keep the classification and programming dimensions, hard specimen budget and unhalved diamond error separate. The [authoritative transfer proof](https://github.com/GoGoKo699/Collective-Quantum-Programming/blob/c6b5150ce0e7d4f6ac81d171bb7f136ad86a1358/science/classification_transfer.md) is in the programming account. For intermediate batches it strengthens the lower bound to order $`(r^2+rk^2)/\epsilon`$; it does not establish the missing $`r^2k/\epsilon`$ term. Q2 remains the statistical theorem supplied by this repository.
 
+## When training is contaminated
+
+[Quantum Training Contamination](https://github.com/GoGoKo699/Quantum-Training-Contamination/blob/main/science/flat_rank_training.md) extends the source to $`\rho=aP/r+(1-a)\sigma`$ while keeping the later test clean. The admissible choice $`\sigma=P/r`$ preserves the Q2 and C3 statistical lower bounds. At balanced rank, the two learner classes retain the same copy-error order and face the same contamination floor. For $`r\le d/2`$ their copy ratio stays of order $`d/r`$ when $`\min(u^2,u)/r`$ is at most a sufficiently small constant times the target excess, where $`u=r(1-a)/a`$.
+
+The same contrast-normalized reduction also carries C3 to a copy lower bound of order $`rD/\epsilon`$ for a programmer in dimension $`D`$ that retains only a classical record. The [classification bridge](science/contaminated_training.md) gives the two clean-subfamily arguments. [Collective Quantum Programming](https://github.com/GoGoKo699/Collective-Quantum-Programming/blob/main/science/contaminated_reflections.md) proves the stronger channel-error floor for the contaminated batch itself.
+
 ## What information the learner receives
 
 All $`N`$ training copies arrive before the test. A coherent learner may retain them and perform any joint measurement at prediction. A classical compiler may perform any collective POVM during training, retain its full classical outcome, and choose any later test measurement from that record. It must discard the training quantum information before the test arrives.
@@ -60,6 +66,7 @@ The exact optimal decision does not need the rank. The promised rank can still d
 | How is the sample order attained, and what does it cost to implement? | [Controlled support reflection and resources](science/constructions.md) |
 | What does Q2 imply for ordinary reflection programming? | [Anchored converse application and exact promise mapping](science/programming_application.md) |
 | Why does an arbitrary classical compiler require order $`rd/\varepsilon`$ copies? | [Posterior bound and matching tomography construction](science/classical_compilation.md) |
+| Which clean classification limits survive when training is contaminated? | [Statistical and classical-record programming converses](science/contaminated_training.md) |
 | What changes between low and high rank? | [Physical interpretation and claim boundaries](science/interpretation.md) |
 | Which ingredients and earlier advantages are inherited? | [Related work](references/RELATED_WORK.md) and [bibliography](references/references.bib) |
 

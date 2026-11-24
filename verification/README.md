@@ -115,3 +115,7 @@ The [reflection-programming application](../science/programming_application.md) 
 The suite checks finite instances of the exact curve and the load-bearing algebra. It does not prove the asymptotic rates from numerical scaling, certify priority, verify experimental noise resilience, or simulate the full sample-based reflection construction. Its diamond-norm error bound and the tomography upper bound are analytical results discussed and attributed in the scientific pages.
 
 The copy-complexity comparison concerns one future test in the flat-subspace experiment. Minimum retained quantum memory, reusable-model lifetime, and arbitrary-spectrum classification remain open in this model.
+
+## Checks for the sister results
+
+The [rank and contamination comparison](../science/contaminated_training.md) uses the existing clean verification above. The [joint finite-instance suite](https://github.com/GoGoKo699/Collective-Quantum-Programming/blob/main/verification/check_contamination.py) checks the shared-density construction, the balanced recognition risk, and its contrast with reference-stable reflection programming.
