@@ -407,7 +407,9 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Conceptual connection.** Small individual spectral gaps can carry a constant aggregate decision advantage. Maintaining observable contrast does not ensure that the orientation needed to use it can be learned from few examples.
 
-**Source pointers.** [Interpretation](../science/interpretation.md); [quantum precision, §7](../science/quantum_precision.md); the scoped [Banchi2024 comparison](../references/RELATED_WORK.md#banchi2024).
+**Training extension.** At $`d=2r`$, identify the contamination term $`\min\{u^2,u,r\}/r`$ and the shared finite-copy term $`r^2/N`$. Explain why the two lower bounds can come from different admissible families and why balanced rank still confers no copy-order separation between the two storage classes.
+
+**Source pointers.** [Interpretation](../science/interpretation.md); [quantum precision, §7](../science/quantum_precision.md); [contaminated training](../science/contaminated_training.md#the-statistical-cost-of-contaminated-recognition); the scoped [Banchi2024 comparison](../references/RELATED_WORK.md#banchi2024).
 
 ### M29
 
@@ -421,7 +423,9 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Conceptual connection.** A channel guarantee can be reduced to this classification experiment without imposing a channel objective on competing classifiers. That direction of implication lets Q2 constrain ordinary reflection programming, while its exact dimension, chronology and error promises remain load-bearing. Attribution and verification must match that precise consequence.
 
-**Source pointers.** [Programming application](../science/programming_application.md); [Watrous bridge, Section 7](watrous_bridge.md#7-from-classification-precision-to-a-programming-converse); [related work](../references/RELATED_WORK.md), especially the An2026, Li2026, O'Donnell–Wright, and Kimmel comparisons; [verification guide](../verification/README.md). The source comparison is bounded and does not certify exhaustive priority.
+**Classical-record extension.** Repeat the reduction using a classical-record programmer and the all-rank inequality C3.1. Explain why the anchored routing leaves a valid classical-record classifier and derive the budget order $`rD/\epsilon`$ on the clean subfamily, even when the programmer's promise permits contamination.
+
+**Source pointers.** [Programming application](../science/programming_application.md); [classical-record converse](../science/contaminated_training.md#a-classical-record-converse-for-ordinary-reflection-programming); [Watrous bridge, Sections 7–8](watrous_bridge.md#7-from-classification-precision-to-a-programming-converse); [related work](../references/RELATED_WORK.md), especially the An2026, Li2026, O'Donnell–Wright, and Kimmel comparisons; [verification guide](../verification/README.md). The source comparison is bounded and does not certify exhaustive priority.
 
 ### M30
 
@@ -435,4 +439,6 @@ Prerequisites refer only to earlier milestone IDs. Their own prerequisites remai
 
 **Conceptual connection.** The central result concerns how much prediction-relevant information survives in coherent examples compared with a classical record. Its exact decision, sample laws, implementation, and limitations answer different parts of that single operational question. The programming application shows why the same statistical obstruction also limits a stronger coherent operation; it does not identify the two tasks or alter the classification objective.
 
-**Source pointers.** [Model](../science/model.md), [exact classifier](../science/exact_classifier.md), [quantum precision](../science/quantum_precision.md), [classical compilation](../science/classical_compilation.md), [construction](../science/constructions.md), and [interpretation](../science/interpretation.md); [Watrous bridge](watrous_bridge.md) for the connection to the selected anchor.
+**Synthesis check.** For a fixed nonzero rank-one contamination fraction, reconcile the improving recognition risk at growing dimension with a single-target reflection error bounded away from zero. Point to the known maximally mixed background in the first task and the arbitrary-input diamond guarantee in the second.
+
+**Source pointers.** [Model](../science/model.md), [exact classifier](../science/exact_classifier.md), [quantum precision](../science/quantum_precision.md), [classical compilation](../science/classical_compilation.md), [construction](../science/constructions.md), and [interpretation](../science/interpretation.md); [contaminated training](../science/contaminated_training.md) and the [Watrous bridge](watrous_bridge.md#8-clean-subfamilies-inside-contaminated-training).
