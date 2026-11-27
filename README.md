@@ -6,6 +6,14 @@ A source supplies independent examples from an unknown state $`P/r`$, uniform on
 
 This repository gives the exact optimal coherent classifier and matching training-copy laws for coherent retention and classical compilation. At excess error $`\varepsilon`$, the coherent cost scales as $`r^2/\varepsilon`$ and the cost of measuring all training data before the test scales as $`rd/\varepsilon`$ throughout the precision range below.
 
+## Run one classification
+
+1. Store the labeled training specimens until the test arrives. For the clean model, the rank and dimension are known, and the test is equally likely to come from the class source or the maximally mixed background. Use the [copy and precision allocation](science/constructions.md#gates-active-width-and-stored-data) for the desired excess risk.
+2. Prepare the test control with a Hadamard on a zero qubit. For each stored specimen, append a flag in state one, partially swap the flagged specimen with the control–test pair at an angle of pi times the rank divided by the allocated copy count, then discard the used specimen. A separate zero work qubit implements each partial swap with a Hadamard, controlled full-register swap and Hadamard, followed by a Z rotation at twice the swap angle and the inverse of the first three gates. This returns the work qubit to zero with exact rotations.
+3. Apply a Hadamard to the test control and measure it in the computational basis. Output the class label on one and the background label on zero. This uses one test and consumes the training specimens. Every outcome produces a label.
+
+This [copy-based construction](science/constructions.md#a-controlled-support-reflection-from-copies) uses inherited sample-based simulation to attain the clean sample order. The [exact optimal decision](science/exact_classifier.md) instead measures the sign of the sum of training–test swaps. The resource account charges all early specimen storage, active registers, source preparation and finite gate synthesis. The [classical-record route](science/classical_compilation.md#3-theorem-c2-constructive-upper-bound) performs collective tomography before the test and measures the estimated top-rank projector at prediction. For contaminated training, the test source remains clean and the [noise-dependent conditions](science/contaminated_training.md#the-statistical-cost-of-contaminated-recognition) govern the copy requirements.
+
 ## Principal results
 
 Let $`N_{\mathrm Q}(d,r,\varepsilon)`$ and $`N_{\mathrm C}(d,r,\varepsilon)`$ be the minimum training-copy budgets required to bring the worst-case classification error within $`\varepsilon`$ of the known-subspace optimum $`R_*=r/(2d)`$. The [model](science/model.md) specifies the minimax risk and chronology.
